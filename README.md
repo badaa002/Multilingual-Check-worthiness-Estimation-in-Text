@@ -2,10 +2,6 @@
 
 # Fact-Checking Task README
 
-## Links:
-- ## Overleaf Raport:https://www.overleaf.com/4415922432fhvgwsxfvmfv#aa0f81
-- ## Presentation: 
-- ## Discord: https://discord.gg/nFmgGwWr
 ## Overview
 This repository is dedicated to a task aimed at evaluating whether a statement, derived from either a tweet or a political debate, warrants fact-checking. The decision-making process involves analyzing whether the statement contains a verifiable factual claim and assessing its potential harm before assigning a final label for its check-worthiness.
 
