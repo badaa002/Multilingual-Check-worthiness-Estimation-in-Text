@@ -23,3 +23,6 @@ predictions/
 
 # Ignore environment-specific files
 .DS_Store
+
+# Exclude zone.identifier files
+**/zone.identifier
