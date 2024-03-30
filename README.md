@@ -13,7 +13,7 @@ The primary goal of this task is to assess the veracity of statements sourced fr
 
 ## Dataset
 The dataset for this task is available at the following location:
-[Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/tree/main/task1)
+[Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/blob/main/task1/data/CT24_checkworthy_english.zip)
 
 ## Model Training
 Transformer models, particularly XLM-RoBERTa-Large, are trained using the HuggingFace library. The training process involves utilizing the provided train split of the dataset.
