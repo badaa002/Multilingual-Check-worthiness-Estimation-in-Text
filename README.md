@@ -15,6 +15,20 @@ The primary goal of this task is to assess the veracity of statements sourced fr
 The dataset for this task is available at the following location:
 [Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/blob/main/task1/data/CT24_checkworthy_english.zip)
 
+Input Data Format (Unimodal - Text -- Political debates)
+For English we use the same data format in the train, dev and dev_test files. Each file is TAB seperated (TSV file) containing the tweets and their labels. The text encoding is UTF-8. Each row in the file has the following format:
+
+sentence_id  text  class_label
+
+Where: 
+
+sentence_id: sentence id for a given political debate 
+
+text: sentence's text 
+
+class_label: Yes and No
+
+
 ## Model Training
 Transformer models, particularly XLM-RoBERTa-Large, are trained using the HuggingFace library. The training process involves utilizing the provided train split of the dataset.
 
