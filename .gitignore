@@ -26,3 +26,6 @@ predictions/
 
 # Exclude zone.identifier files
 **/zone.identifier
+
+notebooks/wandb/
+notebooks/results/
