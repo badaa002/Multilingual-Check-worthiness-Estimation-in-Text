@@ -28,10 +28,10 @@ For Arabic, and Spanish we use the same data format in the train, dev and dev_te
 
 ### Examples:
 
-1235648554338791427	https://twitter.com/A6Asap/status/1235648554338791427	COVID-19 health advice⚠️ https://t.co/XsSAo52Smu	No
-1235287380292235264	https://twitter.com/ItsCeliaAu/status/1235287380292235264	There's not a single confirmed case of an Asian infected in NYC. Stop discriminating cause the virus definitely doesn't. #racist #coronavirus https://t.co/Wt1NPOuQdy	Yes
-1236020820947931136	https://twitter.com/ddale8/status/1236020820947931136	Epidemiologist Marc Lipsitch, director of Harvard's Center for Communicable Disease Dynamics: “In the US it is the opposite of contained.' https://t.co/IPAPagz4Vs	Yes
-... 
+- 1235648554338791427	https://twitter.com/A6Asap/status/1235648554338791427	COVID-19 health advice⚠️ https://t.co/XsSAo52Smu	No
+- 1235287380292235264	https://twitter.com/ItsCeliaAu/status/1235287380292235264	There's not a single confirmed case of an Asian infected in NYC. Stop discriminating cause the virus definitely doesn't. #racist #coronavirus https://t.co/Wt1NPOuQdy	Yes
+- 1236020820947931136	https://twitter.com/ddale8/status/1236020820947931136	Epidemiologist Marc Lipsitch, director of Harvard's Center for Communicable Disease Dynamics: “In the US it is the opposite of contained.' https://t.co/IPAPagz4Vs	Yes
+- ... 
 
 **Note** that the gold labels for the task are the ones in the class_label column.
 
@@ -47,10 +47,10 @@ For English we use the same data format in the train, dev and dev_test files. Ea
 
 ### Examples:
 
-30313	And so I know that this campaign has caused some questioning and worries on the part of many leaders across the globe.	No
-19099	"Now, let's balance the budget and protect Medicare, Medicaid, education and the environment."	No
-33964	I'd like to mention one thing.	No
-... 
+- 30313	And so I know that this campaign has caused some questioning and worries on the part of many leaders across the globe.	No
+- 19099	"Now, let's balance the budget and protect Medicare, Medicaid, education and the environment."	No
+- 33964	I'd like to mention one thing.	No
+- ... 
 
 
 **Note:** The gold labels for the task are found in the `class_label` column.
