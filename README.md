@@ -13,7 +13,34 @@ The primary goal of this task is to assess the veracity of statements sourced fr
 
 ## Dataset
 The dataset for this task is available at the following location:
-[Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/blob/main/task1/data/CT24_checkworthy_english.zip)
+[Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/tree/main/task1/data)
+
+Check-Worthiness of multigenre content
+
+Input Data Format (Unimodal - Text -- Tweets)
+For Arabic, and Spanish we use the same data format in the train, dev and dev_test files. Each file is TAB seperated (TSV file) containing the tweets and their labels. The text encoding is UTF-8. Each row in the file has the following format:
+
+tweet_id  tweet_url  tweet_text  class_label
+
+Where: 
+
+tweet_id: Tweet ID for a given tweet given by Twitter 
+
+tweet_url: URL to the given tweet 
+
+tweet_text: content of the tweet 
+
+class_label: Yes and No
+
+
+Examples:
+
+1235648554338791427	https://twitter.com/A6Asap/status/1235648554338791427	COVID-19 health advice⚠️ https://t.co/XsSAo52Smu	No
+1235287380292235264	https://twitter.com/ItsCeliaAu/status/1235287380292235264	There's not a single confirmed case of an Asian infected in NYC. Stop discriminating cause the virus definitely doesn't. #racist #coronavirus https://t.co/Wt1NPOuQdy	Yes
+1236020820947931136	https://twitter.com/ddale8/status/1236020820947931136	Epidemiologist Marc Lipsitch, director of Harvard's Center for Communicable Disease Dynamics: “In the US it is the opposite of contained.' https://t.co/IPAPagz4Vs	Yes
+... 
+
+Note that the gold labels for the task are the ones in the class_label column.
 
 Input Data Format (Unimodal - Text -- Political debates)
 For English we use the same data format in the train, dev and dev_test files. Each file is TAB seperated (TSV file) containing the tweets and their labels. The text encoding is UTF-8. Each row in the file has the following format:
@@ -27,6 +54,44 @@ sentence_id: sentence id for a given political debate
 text: sentence's text 
 
 class_label: Yes and No
+
+
+Examples:
+
+30313	And so I know that this campaign has caused some questioning and worries on the part of many leaders across the globe.	No
+19099	"Now, let's balance the budget and protect Medicare, Medicaid, education and the environment."	No
+33964	I'd like to mention one thing.	No
+... 
+
+Note that the gold labels for the task are the ones in the class_label column.
+
+Output Data Format
+For both subtasks 1A, and 1B and for all languages (Arabic, English, and Spanish) the submission files format is the same.
+The expected results file is a list of tweets/transcriptions with the predicted class label.
+The file header should strictly be as follows:
+
+id  class_label  run_id
+
+Each row contains three TAB separated fields:
+
+tweet_id or id  class_label  run_id
+
+Where: 
+
+tweet_id or id: Tweet ID or sentence id for a given tweet given by Twitter or coming from political debates given in the test dataset file. 
+
+class_label: Predicted class label for the tweet. 
+
+run_id: String identifier used by participants. 
+
+
+Example:
+
+1235648554338791427	No  Model_1
+1235287380292235264	Yes  Model_1
+1236020820947931136	No  Model_1
+30313	No  Model_1
+... 
 
 
 ## Model Training
