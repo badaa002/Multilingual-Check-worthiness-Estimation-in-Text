@@ -55,36 +55,6 @@ For English we use the same data format in the train, dev and dev_test files. Ea
 
 **Note:** The gold labels for the task are found in the `class_label` column.
 
-## Output Data Format
-
-For both subtasks 1A and 1B across all languages (Arabic, English, and Spanish), the submission file format remains consistent. The expected results are a list of tweets or transcriptions with their predicted class labels.
-
-### File Header:
-
-id  class_label  run_id
-
-### Row Structure:
-
-Each row should have three TAB-separated fields:
-
-
-tweet_id or id  class_label  run_id
-
-
-**Definitions:**
-
-- **tweet_id or id**: Either the Tweet ID or sentence ID for the respective tweet or political debate from the test dataset.
-- **class_label**: Predicted label for the tweet.
-- **run_id**: String identifier used by participants.
-
-### Example:
-
-1235648554338791427	No  Model_1
-1235287380292235264	Yes  Model_1
-1236020820947931136	No  Model_1
-30313	No  Model_1
-... 
-
 
 ## Model Training
 Transformer models, particularly XLM-RoBERTa-Large, are trained using the HuggingFace library. The training process involves utilizing the provided train split of the dataset.
