@@ -15,9 +15,7 @@ The primary goal of this task is to assess the veracity of statements sourced fr
 The dataset for this task is available at the following location:
 [Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/tree/main/task1/data)
 
-Check-Worthiness of multigenre content
-
-Input Data Format (Unimodal - Text -- Tweets)
+### Input Data Format (Unimodal - Text -- Tweets)
 For Arabic, and Spanish we use the same data format in the train, dev and dev_test files. Each file is TAB seperated (TSV file) containing the tweets and their labels. The text encoding is UTF-8. Each row in the file has the following format:
 
 tweet_id  tweet_url  tweet_text  class_label
@@ -42,7 +40,7 @@ Examples:
 
 Note that the gold labels for the task are the ones in the class_label column.
 
-Input Data Format (Unimodal - Text -- Political debates)
+### Input Data Format (Unimodal - Text -- Political debates)
 For English we use the same data format in the train, dev and dev_test files. Each file is TAB seperated (TSV file) containing the tweets and their labels. The text encoding is UTF-8. Each row in the file has the following format:
 
 sentence_id  text  class_label
