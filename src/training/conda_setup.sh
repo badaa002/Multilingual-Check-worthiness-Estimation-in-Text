@@ -11,4 +11,4 @@ conda create -n transformer_cuda12 -c pytorch pytorch torchvision torchaudio pyt
 conda activate transformer_cuda12
 pip3 install torch torchvision torchaudio
 pip3 install transformers[torch]
-pip3 install -r requirements.txt
+pip3 install -r train.txt
