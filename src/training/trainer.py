@@ -29,8 +29,16 @@ def get_paths(is_gdrive: bool = False) -> Any:
         dataset_path: Path to training data.
         save_path: Path to store results.
     """
-    dataset_path = "./drive/MyDrive/data" if is_gdrive else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed"
-    save_folder = "./drive/MyDrive/results" if is_gdrive else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
+    dataset_path = (
+        "./drive/MyDrive/data"
+        if is_gdrive
+        else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_english"
+    )
+    save_folder = (
+        "./drive/MyDrive/results"
+        if is_gdrive
+        else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
+    )
 
     folders = os.listdir(save_folder)
     run_numbers = [int(folder[3:]) for folder in folders if folder.startswith("run")]
@@ -117,8 +125,6 @@ def train(
 
 if __name__ == "__main__":
     dataset_path, save_path = get_paths(is_gdrive=False)
-#    base_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/"
-#    save_path = f"{base_path}run4"
     tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
 
     train_dataset = load_dataset(f"{dataset_path}/preprocessed_train.tsv")

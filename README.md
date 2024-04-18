@@ -13,20 +13,47 @@ The primary goal of this task is to assess the veracity of statements sourced fr
 
 ## Dataset
 The dataset for this task is available at the following location:
-[Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/blob/main/task1/data/CT24_checkworthy_english.zip)
+[Task 1 Dataset](https://gitlab.com/checkthat_lab/clef2024-checkthat-lab/-/tree/main/task1/data)
 
-Input Data Format (Unimodal - Text -- Political debates)
+### Input Data Format (Unimodal - Text -- Tweets)
+For Arabic, and Spanish we use the same data format in the train, dev and dev_test files. Each file is TAB seperated (TSV file) containing the tweets and their labels. The text encoding is UTF-8. Each row in the file has the following format:
+
+
+**Definitions:**
+
+- **tweet_id**: Unique ID assigned to the tweet by Twitter.
+- **tweet_url**: URL link to the specific tweet.
+- **tweet_text**: Actual content of the tweet.
+- **class_label**: Categorical label indicating 'Yes' or 'No'.
+
+### Examples:
+
+- 1235648554338791427	https://twitter.com/A6Asap/status/1235648554338791427	COVID-19 health advice⚠️ https://t.co/XsSAo52Smu	No
+- 1235287380292235264	https://twitter.com/ItsCeliaAu/status/1235287380292235264	There's not a single confirmed case of an Asian infected in NYC. Stop discriminating cause the virus definitely doesn't. #racist #coronavirus https://t.co/Wt1NPOuQdy	Yes
+- 1236020820947931136	https://twitter.com/ddale8/status/1236020820947931136	Epidemiologist Marc Lipsitch, director of Harvard's Center for Communicable Disease Dynamics: “In the US it is the opposite of contained.' https://t.co/IPAPagz4Vs	Yes
+- ... 
+
+**Note** that the gold labels for the task are the ones in the class_label column.
+
+### Input Data Format (Unimodal - Text -- Political debates)
 For English we use the same data format in the train, dev and dev_test files. Each file is TAB seperated (TSV file) containing the tweets and their labels. The text encoding is UTF-8. Each row in the file has the following format:
 
-sentence_id  text  class_label
 
-Where: 
+**Definitions:**
 
-sentence_id: sentence id for a given political debate 
+- **sentence_id**: Unique ID assigned to the sentence from a political debate.
+- **text**: The text of the sentence.
+- **class_label**: Categorical label indicating 'Yes' or 'No'.
 
-text: sentence's text 
+### Examples:
 
-class_label: Yes and No
+- 30313	And so I know that this campaign has caused some questioning and worries on the part of many leaders across the globe.	No
+- 19099	"Now, let's balance the budget and protect Medicare, Medicaid, education and the environment."	No
+- 33964	I'd like to mention one thing.	No
+- ... 
+
+
+**Note:** The gold labels for the task are found in the `class_label` column.
 
 
 ## Model Training
