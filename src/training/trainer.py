@@ -89,21 +89,22 @@ def train(
     torch.cuda.empty_cache()
 
     model = AutoModelForSequenceClassification.from_pretrained(
-        "xlm-roberta-base", num_labels=2
+        "FacebookAI/xlm-roberta-large", num_labels=2
     )
 
     optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
-        num_train_epochs=3,  # total number of training epochs
+        num_train_epochs=5,  # total number of training epochs
         per_device_train_batch_size=16,  # batch size per device during training
         per_device_eval_batch_size=8,  # batch size for evaluation
         warmup_steps=10,  # number of warmup steps for learning rate scheduler
-        weight_decay=0.05,  # strength of weight decay
+        weight_decay=1e-2,  # strength of weight decay
         logging_steps=500,  # how many batches to run before saving a backup of the run
         evaluation_strategy="epoch",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
         report_to="wandb",  # where to upload the data
+        learning_rate=5e-5,
     )
 
     trainer = Trainer(
