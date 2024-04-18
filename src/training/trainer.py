@@ -29,8 +29,8 @@ def get_paths(is_gdrive: bool = False) -> Any:
         dataset_path: Path to training data.
         save_path: Path to store results.
     """
-    dataset_path = "./drive/MyDrive/data" if is_gdrive else "./data/processed"
-    save_folder = "./drive/MyDrive/results" if is_gdrive else "./results"
+    dataset_path = "./drive/MyDrive/data" if is_gdrive else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed"
+    save_folder = "./drive/MyDrive/results" if is_gdrive else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
 
     folders = os.listdir(save_folder)
     run_numbers = [int(folder[3:]) for folder in folders if folder.startswith("run")]
@@ -47,9 +47,6 @@ def load_dataset(path: str) -> Dataset:
     df = df.copy()
     df["label"] = df["class_label"].apply(lambda x: 1 if x == "Yes" else 0)
     df = df.drop(columns=["class_label", "sentence_id"])
-
-    if "train" in path:
-        df = df[:5000]
 
     dataset = Dataset.from_pandas(df)
     return dataset
@@ -84,10 +81,10 @@ def train(
     torch.cuda.empty_cache()
 
     model = AutoModelForSequenceClassification.from_pretrained(
-        "xlm-roberta-large", num_labels=2
+        "xlm-roberta-base", num_labels=2
     )
 
-    # optimizer = torch.optim.Adam(model.parameters(), lr=5e-10)
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
@@ -107,7 +104,7 @@ def train(
         train_dataset=tokenized_train_dataset,
         eval_dataset=tokenized_test_dataset,
         compute_metrics=compute_metrics,
-        #    optimizers=(optimizer, None),
+        optimizers=(optimizer, None),
     )
 
     trainer.train()
@@ -120,6 +117,8 @@ def train(
 
 if __name__ == "__main__":
     dataset_path, save_path = get_paths(is_gdrive=False)
+#    base_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/"
+#    save_path = f"{base_path}run4"
     tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
 
     train_dataset = load_dataset(f"{dataset_path}/preprocessed_train.tsv")
@@ -130,5 +129,5 @@ if __name__ == "__main__":
     tokenized_test_dataset = test_dataset.map(tokenize_function, batched=True)
     tokenized_dev_test_dataset = dev_test_dataset.map(tokenize_function, batched=True)
 
-    wandb.init(project="dat550_project_2")
+    wandb.init(project="dat550_project_base_full")
     train(save_path, tokenized_train_dataset, tokenized_test_dataset)

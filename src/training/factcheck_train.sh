@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --gres=gpu:1
 #SBATCH --partition=gpuA100 
-#SBATCH --time=1:00:00
+#SBATCH --time=1:30:00
 #SBATCH --job-name=factcheck_train
 #SBATCH --output=factcheck_train.out
  

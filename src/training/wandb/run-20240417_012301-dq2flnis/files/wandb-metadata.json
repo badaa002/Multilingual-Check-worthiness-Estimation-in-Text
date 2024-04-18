@@ -1,0 +1,220 @@
+{
+    "os": "Linux-5.4.0-172-generic-x86_64-with-glibc2.31",
+    "python": "3.12.2",
+    "heartbeatAt": "2024-04-16T23:23:02.435184",
+    "startedAt": "2024-04-16T23:23:01.519706",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/mnt/beegfs/home/emartin/Multilingual-Check-worthiness-Estimation-in-Text/src/training/trainer.py",
+    "codePathLocal": "trainer.py",
+    "codePath": "src/training/trainer.py",
+    "git": {
+        "remote": "git@github.com:badaa002/Multilingual-Check-worthiness-Estimation-in-Text.git",
+        "commit": "cf52b661a493270d8a98c77e6265573f1d9cc3d7"
+    },
+    "email": null,
+    "root": "/mnt/beegfs/home/emartin/Multilingual-Check-worthiness-Estimation-in-Text",
+    "host": "gorina7",
+    "username": "emartin",
+    "executable": "/home/stud/emartin/.conda/envs/transformer_cuda12/bin/python",
+    "cpu_count": 32,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 1963.7803125000003,
+        "min": 1500.0,
+        "max": 3000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2156.227,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3094.385,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3146.514,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1484.874,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2360.066,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 2314.651,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1492.556,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1494.738,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1488.265,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1483.66,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1476.846,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1493.414,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1499.047,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1499.642,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1445.384,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3295.825,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3256.55,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3320.245,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3309.857,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1658.953,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1838.212,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1422.946,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1504.716,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1502.595,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1502.311,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1507.668,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1499.646,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1507.996,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1506.836,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1505.669,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 1473.896,
+            "min": 1500.0,
+            "max": 3000.0
+        },
+        {
+            "current": 3296.78,
+            "min": 1500.0,
+            "max": 3000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 122.01070785522461,
+            "used": 104.91193008422852
+        }
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        },
+        {
+            "name": "NVIDIA A100-SXM4-40GB",
+            "memory_total": 42949672960
+        }
+    ],
+    "memory": {
+        "total": 503.8178367614746
+    }
+}
