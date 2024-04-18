@@ -127,7 +127,7 @@ if __name__ == "__main__":
     dataset_path, save_path = get_paths(is_gdrive=False)
     tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
 
-    train_dataset = load_dataset(f"{dataset_path}/preprocessed_train.tsv")
+    train_dataset = load_dataset(f"{dataset_path}/processed_train.tsv")
     test_dataset = load_dataset(f"{dataset_path}/processed_dev.tsv")
     dev_test_dataset = load_dataset(f"{dataset_path}/processed_dev_test.tsv")
 
