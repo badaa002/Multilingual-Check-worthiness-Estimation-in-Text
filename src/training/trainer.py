@@ -97,8 +97,8 @@ def train(
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
         num_train_epochs=8,  # total number of training epochs
-        per_device_train_batch_size=32,  # batch size per device during training
-        per_device_eval_batch_size=32,  # batch size for evaluation
+        per_device_train_batch_size=16,  # batch size per device during training
+        per_device_eval_batch_size=16,  # batch size for evaluation
         warmup_steps=10,  # number of warmup steps for learning rate scheduler
         weight_decay=0.01,  # strength of weight decay
         logging_steps=100,  # how many batches to run before saving a backup of the run
