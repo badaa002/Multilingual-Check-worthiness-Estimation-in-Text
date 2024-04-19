@@ -53,8 +53,6 @@ def get_paths(is_gdrive: bool = False) -> Any:
 def load_dataset(path: str) -> Dataset:
     df = pd.read_csv(path, sep="\t")
     df = df.copy()
-    df["label"] = df["class_label"].apply(lambda x: 1 if x == "Yes" else 0)
-    df = df.drop(columns=["class_label", "sentence_id"])
 
     dataset = Dataset.from_pandas(df)
     return dataset
