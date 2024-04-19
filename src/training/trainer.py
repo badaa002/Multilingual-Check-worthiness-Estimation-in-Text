@@ -81,10 +81,6 @@ def compute_metrics(p: EvalPrediction) -> dict[str, Any]:
 def train(
     save_path: str, tokenized_train_dataset: Dataset, tokenized_test_dataset: Dataset
 ):
-    import gc
-
-    gc.collect()
-    torch.cuda.empty_cache()
 
     model = AutoModelForSequenceClassification.from_pretrained(
         "FacebookAI/xlm-roberta-large", num_labels=2
