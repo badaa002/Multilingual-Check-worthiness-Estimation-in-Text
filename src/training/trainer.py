@@ -32,7 +32,7 @@ def get_paths(is_gdrive: bool = False) -> Any:
     dataset_path = (
         "./drive/MyDrive/data"
         if is_gdrive
-        else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_english"
+        else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/"
     )
     save_folder = (
         "./drive/MyDrive/results"
@@ -96,12 +96,12 @@ def train(
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
-        num_train_epochs=3,  # total number of training epochs
-        per_device_train_batch_size=16,  # batch size per device during training
-        per_device_eval_batch_size=8,  # batch size for evaluation
+        num_train_epochs=8,  # total number of training epochs
+        per_device_train_batch_size=32,  # batch size per device during training
+        per_device_eval_batch_size=32,  # batch size for evaluation
         warmup_steps=10,  # number of warmup steps for learning rate scheduler
-        weight_decay=0.05,  # strength of weight decay
-        logging_steps=500,  # how many batches to run before saving a backup of the run
+        weight_decay=0.01,  # strength of weight decay
+        logging_steps=100,  # how many batches to run before saving a backup of the run
         evaluation_strategy="epoch",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
         report_to="wandb",  # where to upload the data
     )
@@ -127,9 +127,9 @@ if __name__ == "__main__":
     dataset_path, save_path = get_paths(is_gdrive=False)
     tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
 
-    train_dataset = load_dataset(f"{dataset_path}/processed_train.tsv")
-    test_dataset = load_dataset(f"{dataset_path}/processed_dev.tsv")
-    dev_test_dataset = load_dataset(f"{dataset_path}/processed_dev_test.tsv")
+    train_dataset = load_dataset(f"{dataset_path}/merged_train.tsv")
+    test_dataset = load_dataset(f"{dataset_path}/merged_test.tsv")
+    dev_test_dataset = load_dataset(f"{dataset_path}/merged_dev_test.tsv")
 
     tokenized_train_dataset = train_dataset.map(tokenize_function, batched=True)
     tokenized_test_dataset = test_dataset.map(tokenize_function, batched=True)
