@@ -89,7 +89,7 @@ def train(
     torch.cuda.empty_cache()
 
     model = AutoModelForSequenceClassification.from_pretrained(
-        "xlm-roberta-base", num_labels=2
+        "FacebookAI/xlm-roberta-large", num_labels=2
     )
 
     optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
@@ -104,6 +104,7 @@ def train(
         logging_steps=100,  # how many batches to run before saving a backup of the run
         evaluation_strategy="epoch",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
         report_to="wandb",  # where to upload the data
+        learning_rate=5e-5,
     )
 
     trainer = Trainer(
