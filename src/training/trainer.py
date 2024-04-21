@@ -4,13 +4,19 @@ import pandas as pd
 import numpy as np
 import torch
 from datasets import Dataset
-from sklearn.metrics import precision_recall_fscore_support, accuracy_score
+from sklearn.metrics import (
+    confusion_matrix,
+    precision_recall_fscore_support,
+    accuracy_score,
+)
 from transformers import (
     AutoModelForSequenceClassification,
     AutoTokenizer,
     EvalPrediction,
+    EarlyStoppingCallback,
     Trainer,
     TrainingArguments,
+    get_scheduler,
 )
 import wandb
 import os
@@ -75,18 +81,34 @@ def compute_metrics(p: EvalPrediction) -> dict[str, Any]:
         labels, preds, average="binary"
     )
     acc = accuracy_score(labels, preds)
-    return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
+    conf_matrix = confusion_matrix(labels, preds)
+    return {
+        "accuracy": acc,
+        "f1": f1,
+        "precision": precision,
+        "recall": recall,
+        "confusion_matrix": conf_matrix,
+    }
 
 
 def train(
-    save_path: str, tokenized_train_dataset: Dataset, tokenized_test_dataset: Dataset
+    save_path: str,
+    tokenized_train_dataset: Dataset,
+    tokenized_test_dataset: Dataset,
+    num_epochs: int = 5,
 ):
 
     model = AutoModelForSequenceClassification.from_pretrained(
         "xlm-roberta-large", num_labels=2
     )
 
-    # optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    scheduler = get_scheduler(
+        "linear",
+        optimizer,
+        num_warmup_steps=0,
+        num_training_steps=len(tokenized_train_dataset) * num_epochs,
+    )
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
@@ -95,10 +117,11 @@ def train(
         per_device_eval_batch_size=16,  # batch size for evaluation
         warmup_steps=500,  # number of warmup steps for learning rate scheduler
         weight_decay=0.01,  # strength of weight decay
-        logging_steps=100,  # how many batches to run before saving a backup of the run
-        evaluation_strategy="epoch",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
+        logging_steps=500,  # how many batches to run before saving a backup of the run
+        evaluation_strategy="steps",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
+        eval_steps=500,  # how many steps to run before running the evaluation
         report_to="wandb",  # where to upload the data
-        learning_rate=1e-6,
+        learning_rate=1e-6,  # learning rate
     )
 
     trainer = Trainer(
@@ -107,7 +130,8 @@ def train(
         train_dataset=tokenized_train_dataset,
         eval_dataset=tokenized_test_dataset,
         compute_metrics=compute_metrics,
-        # optimizers=(optimizer, None),
+        optimizers=(optimizer, scheduler),
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3, metric_name="f1")],
     )
 
     trainer.train()
