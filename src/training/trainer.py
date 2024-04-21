@@ -122,8 +122,8 @@ def train(
         eval_steps=500,  # how many steps to run before running the evaluation
         report_to="wandb",  # where to upload the data
         learning_rate=1e-6,  # learning rate
-        metric_for_best_model="f1",  # metric to use for early stopping
-        load_best_model_at_end=True,  # load the best model when training ends
+        # metric_for_best_model="f1",  # metric to use for early stopping
+        # load_best_model_at_end=True,  # load the best model when training ends
     )
 
     trainer = Trainer(
@@ -133,7 +133,7 @@ def train(
         eval_dataset=tokenized_test_dataset,
         compute_metrics=compute_metrics,
         optimizers=(optimizer, scheduler),
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
+        # callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
     )
 
     trainer.train()
