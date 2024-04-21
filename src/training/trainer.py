@@ -96,13 +96,13 @@ def train(
         "xlm-roberta-large", num_labels=2
     )
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
-    scheduler = get_scheduler(
-        "linear",
-        optimizer,
-        num_warmup_steps=0,
-        num_training_steps=len(tokenized_train_dataset) * num_epochs,
-    )
+    # optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    # scheduler = get_scheduler(
+    #     "linear",
+    #     optimizer,
+    #     num_warmup_steps=0,
+    #     num_training_steps=len(tokenized_train_dataset) * num_epochs,
+    # )
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
@@ -124,7 +124,7 @@ def train(
         train_dataset=tokenized_train_dataset,
         eval_dataset=tokenized_test_dataset,
         compute_metrics=compute_metrics,
-        optimizers=(optimizer, scheduler),
+        # optimizers=(optimizer, scheduler),
     )
 
     trainer.train()
