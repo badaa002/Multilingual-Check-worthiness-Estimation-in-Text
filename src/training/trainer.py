@@ -59,7 +59,7 @@ def get_paths(is_gdrive: bool = False) -> Any:
 def load_dataset(path: str) -> Dataset:
     df = pd.read_csv(path, sep="\t")
     df = df.copy()
-    df = df[["text", "label"]]
+    # df = df[["text", "label"]]
 
     dataset = Dataset.from_pandas(df)
     return dataset
