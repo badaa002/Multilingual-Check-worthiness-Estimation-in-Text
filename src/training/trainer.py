@@ -81,14 +81,7 @@ def compute_metrics(p: EvalPrediction) -> dict[str, Any]:
         labels, preds, average="binary"
     )
     acc = accuracy_score(labels, preds)
-    conf_matrix = confusion_matrix(labels, preds).tolist()
-    return {
-        "accuracy": acc,
-        "f1": f1,
-        "precision": precision,
-        "recall": recall,
-        "confusion_matrix": conf_matrix,
-    }
+    return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
 
 def train(
@@ -112,18 +105,16 @@ def train(
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
-        num_train_epochs=8,  # total number of training epochs
+        num_train_epochs=5,  # total number of training epochs
         per_device_train_batch_size=16,  # batch size per device during training
         per_device_eval_batch_size=16,  # batch size for evaluation
         warmup_steps=500,  # number of warmup steps for learning rate scheduler
         weight_decay=0.01,  # strength of weight decay
         logging_steps=500,  # how many batches to run before saving a backup of the run
-        evaluation_strategy="steps",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
+        evaluation_strategy="epoch",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
         eval_steps=500,  # how many steps to run before running the evaluation
         report_to="wandb",  # where to upload the data
         learning_rate=1e-6,  # learning rate
-        metric_for_best_model="f1",  # metric to use for early stopping
-        load_best_model_at_end=True,  # load the best model when training ends
     )
 
     trainer = Trainer(
@@ -133,7 +124,6 @@ def train(
         eval_dataset=tokenized_test_dataset,
         compute_metrics=compute_metrics,
         optimizers=(optimizer, scheduler),
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
     )
 
     trainer.train()
