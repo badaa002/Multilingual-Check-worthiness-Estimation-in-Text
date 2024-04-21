@@ -112,7 +112,7 @@ def train(
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
-        num_train_epochs=5,  # total number of training epochs
+        num_train_epochs=8,  # total number of training epochs
         per_device_train_batch_size=16,  # batch size per device during training
         per_device_eval_batch_size=16,  # batch size for evaluation
         warmup_steps=500,  # number of warmup steps for learning rate scheduler
@@ -122,6 +122,7 @@ def train(
         eval_steps=500,  # how many steps to run before running the evaluation
         report_to="wandb",  # where to upload the data
         learning_rate=1e-6,  # learning rate
+        metric_for_best_model="f1",  # metric to use for early stopping
     )
 
     trainer = Trainer(
@@ -131,7 +132,7 @@ def train(
         eval_dataset=tokenized_test_dataset,
         compute_metrics=compute_metrics,
         optimizers=(optimizer, scheduler),
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=3, metric_name="f1")],
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=3)],
     )
 
     trainer.train()
