@@ -124,11 +124,11 @@ if __name__ == "__main__":
 
     train_dataset = load_dataset(f"{dataset_path}/merged_train.tsv")
     test_dataset = load_dataset(f"{dataset_path}/merged_test.tsv")
-    dev_test_dataset = load_dataset(f"{dataset_path}/merged_dev_test.tsv")
+    # dev_test_dataset = load_dataset(f"{dataset_path}/merged_dev_test.tsv")
 
     tokenized_train_dataset = train_dataset.map(tokenize_function, batched=True)
     tokenized_test_dataset = test_dataset.map(tokenize_function, batched=True)
-    tokenized_dev_test_dataset = dev_test_dataset.map(tokenize_function, batched=True)
+    # tokenized_dev_test_dataset = dev_test_dataset.map(tokenize_function, batched=True)
 
     wandb.init(project="dat550_project_base_full")
     train(save_path, tokenized_train_dataset, tokenized_test_dataset)
