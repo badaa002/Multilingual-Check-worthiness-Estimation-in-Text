@@ -83,22 +83,22 @@ def train(
 ):
 
     model = AutoModelForSequenceClassification.from_pretrained(
-        "FacebookAI/xlm-roberta-large", num_labels=2
+        "xlm-roberta-large", num_labels=2
     )
 
-    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    # optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
 
     training_args = TrainingArguments(
         output_dir=save_path,  # output directory
-        num_train_epochs=8,  # total number of training epochs
+        num_train_epochs=5,  # total number of training epochs
         per_device_train_batch_size=16,  # batch size per device during training
         per_device_eval_batch_size=16,  # batch size for evaluation
-        warmup_steps=10,  # number of warmup steps for learning rate scheduler
+        warmup_steps=500,  # number of warmup steps for learning rate scheduler
         weight_decay=0.01,  # strength of weight decay
         logging_steps=100,  # how many batches to run before saving a backup of the run
         evaluation_strategy="epoch",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
         report_to="wandb",  # where to upload the data
-        learning_rate=5e-5,
+        learning_rate=1e-6,
     )
 
     trainer = Trainer(
@@ -107,7 +107,7 @@ def train(
         train_dataset=tokenized_train_dataset,
         eval_dataset=tokenized_test_dataset,
         compute_metrics=compute_metrics,
-        optimizers=(optimizer, None),
+        # optimizers=(optimizer, None),
     )
 
     trainer.train()

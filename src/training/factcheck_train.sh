@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH --gres=gpu:1
 #SBATCH --partition=gpuA100 
-#SBATCH --time=6:00:00
+#SBATCH --time=7:00:00
 #SBATCH --job-name=factcheck_train
-#SBATCH --output=factcheck_train.out
+#SBATCH --output=factcheck_train3.out
  
 # Activate environment
 uenv verbose cuda-12.2.0 cudnn-12.x-8.8.0
