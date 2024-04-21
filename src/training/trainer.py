@@ -123,6 +123,7 @@ def train(
         report_to="wandb",  # where to upload the data
         learning_rate=1e-6,  # learning rate
         metric_for_best_model="f1",  # metric to use for early stopping
+        load_best_model_at_end=True,  # load the best model when training ends
     )
 
     trainer = Trainer(
