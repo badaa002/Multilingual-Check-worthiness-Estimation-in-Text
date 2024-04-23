@@ -75,17 +75,32 @@ def get_dataset(
         train = f"processed_{files['train']}"
         test = f"processed_{files['test']}"
         dev = f"processed_{files['dev']}"
+        train_trans = f"translated_processed_{files['train']}"
 
         train_df = pd.read_csv(f"{base_path}/{folder}/{train}", sep="\t")
         test_df = pd.read_csv(f"{base_path}/{folder}/{test}", sep="\t")
         dev_df = pd.read_csv(f"{base_path}/{folder}/{dev}", sep="\t")
+        trans = pd.read_csv(f"{base_path}/{folder}/{train_trans}", sep="\t")
 
-        return train_df, test_df, dev_df
+        return train_df, test_df, dev_df, trans
 
-    def resample_to_fixed_number(df, n_samples=5000):
+    def add_trans(df1, df2, num_rows):
+        translated = df2.sample(num_rows)
+        result_df = pd.concat([df1, translated])
+        return result_df
+
+    def resample_to_fixed_number(df, trans_df, n_samples=5000, lang="en"):
         ones = df[df["class_label"] == "Yes"]
         zeros = df[df["class_label"] == "No"]
-        print(len(ones), len(zeros))
+
+        if len(ones) < n_samples // 2:
+            num_to_add = n_samples - len(ones)
+            ones = add_trans(ones, trans_df, num_to_add)
+
+        if len(zeros) < n_samples // 2:
+            num_to_add = n_samples - len(zeros)
+            zeros = add_trans(zeros, trans_df, num_to_add)
+
         sets = []
         for dset in [ones, zeros]:
             if len(dset) < n_samples // 2:
@@ -132,25 +147,26 @@ def get_dataset(
     df_train = pd.DataFrame()
     df_test = pd.DataFrame()
     df_dev = pd.DataFrame()
+    df_trans = pd.DataFrame()
     if lang == "all":
         for lang, files in langs.items():
-            train, test, dev = get_folder(lang, files)
+            train, test, dev, trans = get_folder(lang, files)
 
             if sample:
-                df_train = resample_to_fixed_number(train, n_samples)
-                df_test = resample_to_fixed_number(test, 500)
-                df_dev = resample_to_fixed_number(dev, 500)
+                df_train = resample_to_fixed_number(train, trans, n_samples, lang=None)
+                df_test = resample_to_fixed_number(test, trans, 500, lang=None)
+                df_dev = resample_to_fixed_number(dev, trans, 500, lang=None)
 
             df_train = pd.concat([df_train, train])
             df_test = pd.concat([df_test, test])
             df_dev = pd.concat([df_dev, dev])
 
     else:
-        df_train, df_test, df_dev = get_folder(lang, langs[lang])
+        df_train, df_test, df_dev, df_trans = get_folder(lang, langs[lang], lang=lang)
         if sample:
-            df_train = resample_to_fixed_number(df_train, n_samples)
-            df_test = resample_to_fixed_number(df_test, 500)
-            df_dev = resample_to_fixed_number(df_dev, 500)
+            df_train = resample_to_fixed_number(df_train, df_trans, n_samples)
+            df_test = resample_to_fixed_number(df_test, df_trans, 500)
+            df_dev = resample_to_fixed_number(df_dev, df_trans, 500)
 
     df_train = df_train.rename(columns={"class_label": "labels", "tweet_text": "text"})
     df_test = df_test.rename(columns={"class_label": "labels", "tweet_text": "text"})
@@ -178,7 +194,7 @@ def train(config=None):
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
-            base_path=dataset_path, lang="en", sample=True, n_samples=7000
+            base_path=dataset_path, lang="en", sample=True, n_samples=20000
         )
         tokenized_train = train.map(tokenize_function, batched=True)
         tokenized_test = test.map(tokenize_function, batched=True)
