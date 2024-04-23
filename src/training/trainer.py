@@ -25,7 +25,7 @@ model = AutoModelForSequenceClassification.from_pretrained(
 
 
 def get_paths(base_path: str = "../../") -> Any:
-    dataset_path = f"{base_path}/data/processed/"
+    dataset_path = f"{base_path}/data/processed"
     save_folder = f"{base_path}/results"
 
     folders = os.listdir(save_folder)
@@ -71,10 +71,10 @@ def get_dataset(
     def get_folder(
         lang: str, files: dict
     ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-        folder = f"processed_CT24_checkworthy_{langs[lang]['folder']}"
-        train = f"processed_{files[train]}"
-        test = f"processed_{files[test]}"
-        dev = f"processed_{files[dev]}"
+        folder = f"processed_CT24_checkworthy_{files['folder']}"
+        train = f"processed_{files['train']}"
+        test = f"processed_{files['test']}"
+        dev = f"processed_{files['dev']}"
 
         train_df = pd.read_csv(f"{base_path}/{folder}/{train}", sep="\t")
         test_df = pd.read_csv(f"{base_path}/{folder}/{test}", sep="\t")
@@ -105,25 +105,25 @@ def get_dataset(
     langs = {
         "en": {
             "train": "train.tsv",
-            "test": "test.tsv",
+            "test": "dev.tsv",
             "dev": "dev_test.tsv",
             "folder": "english",
         },
         "nl": {
             "train": "dutch_train.tsv",
-            "test": "dutch_test.tsv",
+            "test": "dutch_dev.tsv",
             "dev": "dutch_dev_test.tsv",
             "folder": "dutch",
         },
         "ar": {
             "train": "arabic_train.tsv",
-            "test": "arabic_test.tsv",
+            "test": "arabic_dev.tsv",
             "dev": "arabic_dev_test.tsv",
             "folder": "arabic",
         },
         "es": {
             "train": "spanish_train.tsv",
-            "test": "spanish_test.tsv",
+            "test": "spanish_dev.tsv",
             "dev": "spanish_dev_test.tsv",
             "folder": "spanish",
         },
@@ -138,8 +138,8 @@ def get_dataset(
 
             if sample:
                 df_train = resample_to_fixed_number(train, n_samples)
-                df_test = resample_to_fixed_number(test, n_samples)
-                df_dev = resample_to_fixed_number(dev, n_samples)
+                df_test = resample_to_fixed_number(test, 500)
+                df_dev = resample_to_fixed_number(dev, 500)
 
             df_train = pd.concat([df_train, train])
             df_test = pd.concat([df_test, test])
@@ -149,8 +149,8 @@ def get_dataset(
         df_train, df_test, df_dev = get_folder(lang, langs[lang])
         if sample:
             df_train = resample_to_fixed_number(df_train, n_samples)
-            df_test = resample_to_fixed_number(df_test, n_samples)
-            df_dev = resample_to_fixed_number(df_dev, n_samples)
+            df_test = resample_to_fixed_number(df_test, 500)
+            df_dev = resample_to_fixed_number(df_dev, 500)
 
     return (
         Dataset.from_pandas(df_train),
@@ -163,9 +163,7 @@ def train(config=None):
     with wandb.init(config=config, project="dat550_project_lang") as run:
         save = True
         config = run.config
-        base_path = (
-            "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/"
-        )
+        base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
