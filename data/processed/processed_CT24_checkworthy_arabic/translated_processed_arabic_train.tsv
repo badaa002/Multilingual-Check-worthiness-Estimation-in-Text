@@ -1,4 +1,4 @@
-	tweet_id	tweet_text	class_label	text_length	hashtags	mentions	text_length_category	hashtags_frequency	hashtags_sentiment	hashtags_topics
+tweet_id	tweet_text	class_label	text_length	hashtags	mentions	text_length_category	hashtags_frequency	hashtags_sentiment	hashtags_topics
 1539	"<s>كارمن كالفو: ""ما الذي تنوي فعله يا سيد كاسادو؟"" كايتانا لفاريز دي توليدو: لقد ألمحت إلى أن الحزب الشعبي يدعم الانقلاب.</s><s>الشخص الذي يتحدث ويذكر هو كايتانا.</s><s>#</s><s>SesionDeControl</s>"	Yes	34	#SesionDeControl	[]	31-40	1	0.0	2
 3977	<s>كل عام زاد عدد الحضور والعارضين.</s><s>لكنه ليس مجرد معرض تجاري شكل نظاما بيئيا كاملا حوله ، مدفوعا بالتعاون بين القطاعين العام والخاص بين @<USER>آلاف الشركات.</s>	Yes	39		['@govern,', '@MWCapital,', '@bcn_ajuntament']	31-40	0	0.0	0
 18634	<s>حسنا ، رؤية الإخفاقات التي واجهناها أو الصعوبات التي واجهتها الشركات.</s>	No	11		[]	11-20	0	0.0	4
