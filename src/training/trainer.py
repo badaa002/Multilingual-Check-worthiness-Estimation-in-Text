@@ -254,8 +254,8 @@ if __name__ == "__main__":
     config = {
         "learning_rate": 1e-6,
         "num_train_epochs": 3,
-        "per_device_train_batch_size": 32,
-        "per_device_eval_batch_size": 32,
+        "per_device_train_batch_size": 16,
+        "per_device_eval_batch_size": 16,
         "weight_decay": 0.1,
         "warmup_steps": 500,
         "optimizer": "adam",
