@@ -203,7 +203,6 @@ def train(config=None):
             warmup_steps=config.warmup_steps,
             weight_decay=config.weight_decay,
             learning_rate=config.learning_rate,
-            use_cpu=True,
         )
         trainer = Trainer(
             model=model,
