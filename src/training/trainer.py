@@ -67,10 +67,6 @@ def train():
         base_path = (
             "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/"
         )
-        try:
-            print(f"Optimizer class: {config.optimizer}")
-        except Exception as e:
-            print(f"Optimizer dict: {config.get('optimizer', None)}")
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train = f"{dataset_path}/merged_train.tsv"
@@ -122,30 +118,32 @@ if __name__ == "__main__":
             "name": "f1",
             "goal": "maximize",
         },
-        "optimizer": {
-            "values": ["adam"],
-        },
-        "learning_rate": {
-            "min": 1e-8,
-            "max": 1e-4,
-            "distribution": "log_uniform",
-        },
-        "num_train_epochs": {
-            "values": [2, 4],
-        },
-        "per_device_train_batch_size": {
-            "values": [16, 32],
-        },
-        "per_device_eval_batch_size": {
-            "values": [16, 32],
-        },
-        "weight_decay": {
-            "min": 0.01,
-            "max": 0.2,
-            "distribution": "log_uniform",
-        },
-        "warmup_steps": {
-            "values": [500, 1000],
+        "parameters": {
+            "optimizer": {
+                "values": ["adam"],
+            },
+            "learning_rate": {
+                "min": 1e-8,
+                "max": 1e-4,
+                "distribution": "log_uniform",
+            },
+            "num_train_epochs": {
+                "values": [2, 4],
+            },
+            "per_device_train_batch_size": {
+                "values": [16, 32],
+            },
+            "per_device_eval_batch_size": {
+                "values": [16, 32],
+            },
+            "weight_decay": {
+                "min": 0.01,
+                "max": 0.2,
+                "distribution": "log_uniform",
+            },
+            "warmup_steps": {
+                "values": [500, 1000],
+            },
         },
     }
     sweep_id = wandb.sweep(sweep_config, project="factcheckworthiness")
