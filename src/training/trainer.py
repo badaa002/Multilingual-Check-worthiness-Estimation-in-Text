@@ -111,8 +111,6 @@ def train(config=None):
 
 
 if __name__ == "__main__":
-    base_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
-    dataset_path, save_path = get_paths(base_path=base_path)
 
     sweep_config = {
         "method": "random",
