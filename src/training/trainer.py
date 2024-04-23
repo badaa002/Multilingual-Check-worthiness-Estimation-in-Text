@@ -119,7 +119,7 @@ if __name__ == "__main__":
             "goal": "maximize",
         },
         "optimizer": {
-            "values": ["adam", None],
+            "values": ["adam"],
         },
         "learning_rate": {
             "min": 1e-8,
