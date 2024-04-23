@@ -64,7 +64,9 @@ def train(config=None):
     with wandb.init():
         save = False
         config = wandb.config
-        base_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
+        base_path = (
+            "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/"
+        )
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train = f"{dataset_path}/merged_train.tsv"
