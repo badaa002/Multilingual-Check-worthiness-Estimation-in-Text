@@ -1,4 +1,4 @@
-Sentence_id	tweet_text	class_label	hashtags	mentions	text_length	text_length_category	class_label_encoded	hashtags_frequency	hashtags_sentiment	hashtags_topics
+tweet_id	tweet_text	class_label	hashtags	mentions	text_length	text_length_category	class_label_encoded	hashtags_frequency	hashtags_sentiment	hashtags_topics
 26	"You know, I saw a movie - "Crocodile Dundee."	No			46	41-50	0	0	0	0
 80	We're consuming 50 percent of the world's cocaine.	Yes			50	41-50	1	0	0	0
 129	That answer was about as clear as Boston harbor.	No			48	41-50	0	0	0	0

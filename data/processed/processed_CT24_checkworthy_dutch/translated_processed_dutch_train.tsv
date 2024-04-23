@@ -1,4 +1,4 @@
-	tweet_text	label	text_length	hashtags	mentions	text_length_category	hashtags_frequency	hashtags_sentiment	hashtags_topics
+tweet_id	tweet_text	class_label	text_length	hashtags	mentions	text_length_category	hashtags_frequency	hashtags_sentiment	hashtags_topics
 6761	In juli 2018<USER> @ gaf een levendige toespraak die hem naar het presidentschap leidde Vandaag op Plaza Toros neemt Valencia Spanje mee #CreemosElCambio	No	38	#CreemosElCambio	['@pablocasado_', '@populares']	31-40	1	0.0	3
 2027	De voorzitter van Renfe, Isaías Taboas, overhandigt de minister @<USER> het eerste ticket #Avlo nieuwe goedkope AVE-service	No	25	#Avlo,	['@mitmagob,', '@abalosmeco']	21-30	1	0.0	0
 2977	"@<USER> nl : ""Bildu Sortu en Otegi zijn nu de wolf #Euskadi Roodkapje Madrid""."	No	19	#Euskadi	['@andoniortuzar,', '@Herri_Irratia:']	11-20	1	0.0	3

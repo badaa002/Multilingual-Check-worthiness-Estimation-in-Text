@@ -1,4 +1,4 @@
-Sentence_id	tweet_text	class_label	hashtags	mentions	text_length	text_length_category	class_label_encoded	hashtags_frequency	hashtags_sentiment	hashtags_topics
+tweet_id	tweet_text	class_label	hashtags	mentions	text_length	text_length_category	class_label_encoded	hashtags_frequency	hashtags_sentiment	hashtags_topics
 37436	He's been a professor for a long time at a great school.	No			56	51-60	0	0	0	0
 37440	There's no way they would give it up.	No			37	31-40	0	0	0	0
 37463	They're able to charge women more for the same exact procedure a man gets.	Yes			74	71-80	1	0	0	0

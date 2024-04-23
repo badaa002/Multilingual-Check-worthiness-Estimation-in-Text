@@ -1,4 +1,4 @@
-	tweet_text	label	text_length	hashtags	mentions	text_length_category	hashtags_frequency	hashtags_sentiment	hashtags_topics
+tweet_id	tweet_text	class_label	text_length	hashtags	mentions	text_length_category	hashtags_frequency	hashtags_sentiment	hashtags_topics
 12818	I think we have to reduce that level of tension or decibels that is provided when education speaks.	No	22		[]	21-30	0	0.0	4
 7542	Electricity and brick and mortar were always his most profitable businesses. It is normal for the PP to go out in a flurry to defend privileges.	No	25		[]	21-30	0	0.0	0
 12291	Without a doubt, we must appeal to unity, but also loyalty.	No	14		[]	11-20	0	0.0	3

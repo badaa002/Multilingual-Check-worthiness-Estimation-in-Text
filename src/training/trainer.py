@@ -177,13 +177,13 @@ def get_dataset(
                 else df_dev
             )
 
-    df_train = df_train.rename(columns={"class_label": "labels", "tweet_text": "text"})
-    df_test = df_test.rename(columns={"class_label": "labels", "tweet_text": "text"})
-    df_dev = df_dev.rename(columns={"class_label": "labels", "tweet_text": "text"})
+    df_train = df_train.rename(columns={"class_label": "label", "tweet_text": "text"})
+    df_test = df_test.rename(columns={"class_label": "label", "tweet_text": "text"})
+    df_dev = df_dev.rename(columns={"class_label": "label", "tweet_text": "text"})
 
-    df_train["labels"] = df_train["labels"].apply(lambda x: 1 if x == "Yes" else 0)
-    df_test["labels"] = df_test["labels"].apply(lambda x: 1 if x == "Yes" else 0)
-    df_dev["labels"] = df_dev["labels"].apply(lambda x: 1 if x == "Yes" else 0)
+    df_train["label"] = df_train["label"].apply(lambda x: 1 if x == "Yes" else 0)
+    df_test["label"] = df_test["label"].apply(lambda x: 1 if x == "Yes" else 0)
+    df_dev["label"] = df_dev["label"].apply(lambda x: 1 if x == "Yes" else 0)
 
     return (
         Dataset.from_pandas(df_train),
