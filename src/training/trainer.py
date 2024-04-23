@@ -137,7 +137,8 @@ if __name__ == "__main__":
                 "values": [16, 32],
             },
             "weight_decay": {
-                "values": [0.01, 0.2],
+                "min": 0.01,
+                "max": 0.2,
                 "distribution": "log_uniform",
             },
             "warmup_steps": {
