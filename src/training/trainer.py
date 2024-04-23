@@ -120,7 +120,7 @@ if __name__ == "__main__":
         },
         "parameters": {
             "optimizer": {
-                "values": ["adam"],
+                "values": ["adam", None],
             },
             "learning_rate": {
                 "min": 1e-8,
@@ -128,7 +128,7 @@ if __name__ == "__main__":
                 "distribution": "log_uniform",
             },
             "num_train_epochs": {
-                "values": [2, 4],
+                "values": [2, 3],
             },
             "per_device_train_batch_size": {
                 "values": [16, 32],
@@ -147,4 +147,4 @@ if __name__ == "__main__":
         },
     }
     sweep_id = wandb.sweep(sweep_config, project="factcheckworthiness")
-    wandb.agent(sweep_id, train, count=1)
+    wandb.agent(sweep_id, train, count=5)
