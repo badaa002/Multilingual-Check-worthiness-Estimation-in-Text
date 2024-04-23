@@ -163,7 +163,9 @@ def train(config=None):
     with wandb.init(config=config, project="dat550_project_lang") as run:
         save = True
         config = run.config
-        base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
+        base_path = (
+            "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text"
+        )
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
