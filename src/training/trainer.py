@@ -199,11 +199,11 @@ def train(config=None):
         base_path = (
             "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text"
         )
-        # base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
+        base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
-            base_path=dataset_path, lang="en", sample=True, n_samples=20000
+            base_path=dataset_path, lang="ar", sample=True, n_samples=20000
         )
         tokenized_train = train.map(tokenize_function, batched=True)
         tokenized_test = test.map(tokenize_function, batched=True)
