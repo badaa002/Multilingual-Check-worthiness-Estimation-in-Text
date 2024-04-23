@@ -3,7 +3,7 @@
 #SBATCH --partition=gpuA100 
 #SBATCH --time=8:00:00
 #SBATCH --job-name=factcheck_train
-#SBATCH --output=factcheck_train3.out
+#SBATCH --output=sweep-%j.out
  
 # Activate environment
 uenv verbose cuda-12.2.0 cudnn-12.x-8.8.0
@@ -12,4 +12,4 @@ conda activate transformer_cuda12
 PATH=~/.local/bin:$PATH
 echo $PATH
 # Run the Python script that uses the GPU
-TOKENIZERS_PARALLELISM=false python -u vinay_trainer.py
+TOKENIZERS_PARALLELISM=false python -u trainer.py

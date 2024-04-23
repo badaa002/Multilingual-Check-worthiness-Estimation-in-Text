@@ -1,68 +1,48 @@
 """File for training XML-RoBERTa model."""
 
+import os
+from typing import Any
 import pandas as pd
 import numpy as np
-import torch
 from datasets import Dataset
-from sklearn.metrics import (
-    confusion_matrix,
-    precision_recall_fscore_support,
-    accuracy_score,
-)
+import torch
 from transformers import (
-    AutoModelForSequenceClassification,
     AutoTokenizer,
-    EvalPrediction,
-    EarlyStoppingCallback,
+    AutoModelForSequenceClassification,
     Trainer,
     TrainingArguments,
-    get_scheduler,
 )
+from sklearn.metrics import precision_recall_fscore_support, accuracy_score
+from transformers.trainer_utils import EvalPrediction
 import wandb
-import os
-from sklearn.utils import shuffle
-from typing import Any
 
 
-def get_paths(is_gdrive: bool = False) -> Any:
-    """Get paths for training data and storing results.
+tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
+model = AutoModelForSequenceClassification.from_pretrained(
+    "xlm-roberta-large", num_labels=2
+)
 
-    Args:
-        is_gdrive: Whether to use Google Drive path for storing results and
-            retrieving data.
 
-    Returns:
-        dataset_path: Path to training data.
-        save_path: Path to store results.
-    """
-    dataset_path = (
-        "./drive/MyDrive/data"
-        if is_gdrive
-        else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/"
-    )
-    save_folder = (
-        "./drive/MyDrive/results"
-        if is_gdrive
-        else "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
-    )
+def get_paths(base_path: str = "../../") -> Any:
+    dataset_path = f"{base_path}/data/processed/"
+    save_folder = f"{base_path}/results"
 
     folders = os.listdir(save_folder)
     run_numbers = [int(folder[3:]) for folder in folders if folder.startswith("run")]
     run_id = max(run_numbers, default=0) + 1
-
     save_path = f"{save_folder}/run{run_id}"
-
     os.makedirs(save_path)
+
     return dataset_path, save_path
 
 
 def load_dataset(path: str) -> Dataset:
-    df = pd.read_csv(path, sep="\t")
-    df = df.copy()
-    # df = df[["text", "label"]]
-
-    dataset = Dataset.from_pandas(df)
-    return dataset
+    try:
+        df = pd.read_csv(path, sep="\t")
+    except Exception as e:
+        print(f"Error loading dataset: {e}")
+        return None
+    return Dataset.from_pandas(df)
 
 
 def tokenize_function(examples):
@@ -71,81 +51,99 @@ def tokenize_function(examples):
     )
 
 
-def compute_metrics(p: EvalPrediction) -> dict[str, Any]:
+def compute_metrics(p: EvalPrediction) -> dict:
     preds = np.argmax(p.predictions, axis=1)
-    labels = p.label_ids
-    print(f"Preds: {preds}")
-    print(f"Num ones: ", len([p for p in preds if p == 1]))
-    print(f"Num zeroes: ", len([p for p in preds if p == 0]))
-
     precision, recall, f1, _ = precision_recall_fscore_support(
-        labels, preds, average="binary"
+        p.label_ids, preds, average="binary"
     )
-    acc = accuracy_score(labels, preds)
+    acc = accuracy_score(p.label_ids, preds)
     return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
 
-def train(
-    save_path: str,
-    tokenized_train_dataset: Dataset,
-    tokenized_test_dataset: Dataset,
-    num_epochs: int = 5,
-):
+def train(config=None):
+    with wandb.init():
+        save = False
+        config = wandb.config
+        base_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
+        dataset_path, save_path = get_paths(base_path=base_path)
 
-    model = AutoModelForSequenceClassification.from_pretrained(
-        "xlm-roberta-large", num_labels=2
-    )
+        train = f"{dataset_path}/merged_train.tsv"
+        test = f"{dataset_path}/merged_test.tsv"
+        tokenized_train = load_dataset(train).map(tokenize_function, batched=True)
+        tokenized_test = load_dataset(test).map(tokenize_function, batched=True)
 
-    # optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
-    # scheduler = get_scheduler(
-    #     "linear",
-    #     optimizer,
-    #     num_warmup_steps=0,
-    #     num_training_steps=len(tokenized_train_dataset) * num_epochs,
-    # )
+        optimizer = None
 
-    training_args = TrainingArguments(
-        output_dir=save_path,  # output directory
-        num_train_epochs=5,  # total number of training epochs
-        per_device_train_batch_size=16,  # batch size per device during training
-        per_device_eval_batch_size=16,  # batch size for evaluation
-        warmup_steps=500,  # number of warmup steps for learning rate scheduler
-        weight_decay=0.01,  # strength of weight decay
-        logging_steps=500,  # how many batches to run before saving a backup of the run
-        evaluation_strategy="epoch",  # when to run the model evaluation (check what the model has learned agains the data it has trained on)
-        eval_steps=500,  # how many steps to run before running the evaluation
-        report_to="wandb",  # where to upload the data
-        learning_rate=1e-6,  # learning rate
-    )
+        if config["optimizer"] == "adam":
+            optimizer = torch.optim.AdamW(
+                model.parameters(),
+                lr=config["learning_rate"],
+                weight_decay=config["weight_decay"],
+            )
 
-    trainer = Trainer(
-        model=model,
-        args=training_args,
-        train_dataset=tokenized_train_dataset,
-        eval_dataset=tokenized_test_dataset,
-        compute_metrics=compute_metrics,
-        # optimizers=(optimizer, scheduler),
-    )
-
-    trainer.train()
-
-    trainer.save_model(save_path)
-    tokenizer.save_pretrained(save_path)
-
-    wandb.finish()
+        training_args = TrainingArguments(
+            output_dir=save_path,
+            logging_dir=f"{save_path}/logs",
+            report_to="wandb",
+            evaluation_strategy="epoch",
+            eval_steps=0.1,
+            num_train_epochs=config["num_train_epochs"],
+            per_device_train_batch_size=config["per_device_train_batch_size"],
+            per_device_eval_batch_size=config["per_device_eval_batch_size"],
+            warmup_steps=config["warmup_steps"],
+            weight_decay=config["weight_decay"],
+            learning_rate=config["learning_rate"],
+        )
+        trainer = Trainer(
+            model=model,
+            args=training_args,
+            train_dataset=tokenized_train,
+            eval_dataset=tokenized_test,
+            compute_metrics=compute_metrics,
+            optimizers=(optimizer if optimizer else None, None),
+        )
+        trainer.train()
+        if save:
+            trainer.save_model()
+            tokenizer.save_pretrained(save_path)
 
 
 if __name__ == "__main__":
-    dataset_path, save_path = get_paths(is_gdrive=False)
-    tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
+    base_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results"
+    dataset_path, save_path = get_paths(base_path=base_path)
 
-    train_dataset = load_dataset(f"{dataset_path}/merged_train.tsv")
-    test_dataset = load_dataset(f"{dataset_path}/merged_test.tsv")
-    # dev_test_dataset = load_dataset(f"{dataset_path}/merged_dev_test.tsv")
-
-    tokenized_train_dataset = train_dataset.map(tokenize_function, batched=True)
-    tokenized_test_dataset = test_dataset.map(tokenize_function, batched=True)
-    # tokenized_dev_test_dataset = dev_test_dataset.map(tokenize_function, batched=True)
-
-    wandb.init(project="dat550_project_base_full")
-    train(save_path, tokenized_train_dataset, tokenized_test_dataset)
+    sweep_config = {
+        "method": "random",
+        "metric": {
+            "name": "f1",
+            "goal": "maximize",
+        },
+        "optimizer": {
+            "values": ["adam", None],
+        },
+        "parameters": {
+            "learning_rate": {
+                "min": 1e-8,
+                "max": 1e-4,
+                "distribution": "log_uniform",
+            },
+            "num_train_epochs": {
+                "values": [2, 4],
+            },
+            "per_device_train_batch_size": {
+                "values": [16, 32],
+            },
+            "per_device_eval_batch_size": {
+                "values": [16, 32],
+            },
+            "weight_decay": {
+                "values": [0.01, 0.2],
+                "distribution": "log_uniform",
+            },
+            "warmup_steps": {
+                "values": [500, 1000],
+            },
+        },
+    }
+    sweep_id = wandb.sweep(sweep_config, project="factcheckworthiness")
+    wandb.agent(sweep_id, train, count=5)
