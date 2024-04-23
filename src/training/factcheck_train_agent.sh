@@ -14,8 +14,6 @@ echo $PATH
 
 # Ensure wandb is installed and login if needed
 pip install wandb --upgrade
-# Replace YOUR_API_KEY with your actual wandb API key
-wandb login YOUR_API_KEY
 
 # Launch a wandb agent for a specific sweep
 # Replace 'your_sweep_id' with your actual wandb sweep ID
