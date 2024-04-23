@@ -1,10 +1,11 @@
 """File for training XML-RoBERTa model."""
 
 import os
-from typing import Any
+from typing import Any, Literal
 import pandas as pd
 import numpy as np
 from datasets import Dataset
+from sklearn.utils import resample
 import torch
 from transformers import (
     AutoTokenizer,
@@ -60,28 +61,111 @@ def compute_metrics(p: EvalPrediction) -> dict:
     return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
 
-def train():
-    with wandb.init() as run:
-        save = False
+def get_dataset(
+    base_path: str,
+    lang: Literal["en", "nl", "ar", "es", "all"],
+    sample: bool = True,
+    n_samples: int = 7000,
+) -> Dataset:
+
+    def get_folder(
+        lang: str, files: dict
+    ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+        folder = f"processed_CT24_checkworthy_{langs[lang]['folder']}"
+        train = f"processed_{files[train]}"
+        test = f"processed_{files[test]}"
+        dev = f"processed_{files[dev]}"
+
+        train_df = pd.read_csv(f"{base_path}/{folder}/{train}", sep="\t")
+        test_df = pd.read_csv(f"{base_path}/{folder}/{test}", sep="\t")
+        dev_df = pd.read_csv(f"{base_path}/{folder}/{dev}", sep="\t")
+
+        return train_df, test_df, dev_df
+
+    def resample_to_fixed_number(df, n_samples=5000):
+        ones = df[df["class_label"] == "Yes"]
+        zeros = df[df["class_label"] == "No"]
+        print(len(ones), len(zeros))
+        sets = []
+        for dset in [ones, zeros]:
+            if len(dset) < n_samples // 2:
+                sets.append(
+                    resample(
+                        dset, replace=True, n_samples=n_samples // 2, random_state=567
+                    )
+                )
+            else:
+                sets.append(
+                    resample(
+                        dset, replace=False, n_samples=n_samples // 2, random_state=567
+                    )
+                )
+        return pd.concat(sets)
+
+    langs = {
+        "en": {
+            "train": "train.tsv",
+            "test": "test.tsv",
+            "dev": "dev_test.tsv",
+            "folder": "english",
+        },
+        "nl": {
+            "train": "dutch_train.tsv",
+            "test": "dutch_test.tsv",
+            "dev": "dutch_dev_test.tsv",
+            "folder": "dutch",
+        },
+        "ar": {
+            "train": "arabic_train.tsv",
+            "test": "arabic_test.tsv",
+            "dev": "arabic_dev_test.tsv",
+            "folder": "arabic",
+        },
+        "es": {
+            "train": "spanish_train.tsv",
+            "test": "spanish_test.tsv",
+            "dev": "spanish_dev_test.tsv",
+            "folder": "spanish",
+        },
+    }
+
+    df = pd.DataFrame()
+    if lang == "all":
+        for lang, files in langs.items():
+            lang_df = get_folder(lang, files)
+            df = pd.concat([df, lang_df])
+            if sample:
+                df = resample_to_fixed_number(df, n_samples)
+    else:
+        df = get_folder(lang, langs[lang])
+        if sample:
+            df = resample_to_fixed_number(df, n_samples)
+
+    return Dataset.from_pandas(df)
+
+
+def train(config=None):
+    with wandb.init(config=config, project="dat550_project_lang") as run:
+        save = True
         config = run.config
         base_path = (
             "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/"
         )
         dataset_path, save_path = get_paths(base_path=base_path)
 
-        train = f"{dataset_path}/merged_train.tsv"
-        test = f"{dataset_path}/merged_test.tsv"
+        train, test, dev_test = get_dataset(
+            base_path=dataset_path, lang="en", sample=True, n_samples=7000
+        )
         tokenized_train = load_dataset(train).map(tokenize_function, batched=True)
         tokenized_test = load_dataset(test).map(tokenize_function, batched=True)
 
-        optimizer = None
-
-        if config.optimizer == "adam":
-            optimizer = torch.optim.AdamW(
-                model.parameters(),
-                lr=config.learning_rate,
-                weight_decay=config.weight_decay,
-            )
+        # optimizer = None
+        # if config.optimizer and config.optimizer == "adam":
+        #     optimizer = torch.optim.AdamW(
+        #         model.parameters(),
+        #         lr=config.learning_rate,
+        #         weight_decay=config.weight_decay,
+        #     )
 
         training_args = TrainingArguments(
             output_dir=save_path,
@@ -102,7 +186,7 @@ def train():
             train_dataset=tokenized_train,
             eval_dataset=tokenized_test,
             compute_metrics=compute_metrics,
-            optimizers=(optimizer if optimizer else None, None),
+            # optimizers=(optimizer if optimizer else None, None),
         )
         trainer.train()
         if save:
@@ -146,5 +230,16 @@ if __name__ == "__main__":
             },
         },
     }
-    sweep_id = wandb.sweep(sweep_config, project="factcheckworthiness")
-    wandb.agent(sweep_id, train, count=5)
+
+    config = {
+        "learning_rate": 1e-6,
+        "num_train_epochs": 3,
+        "per_device_train_batch_size": 32,
+        "per_device_eval_batch_size": 32,
+        "weight_decay": 0.1,
+        "warmup_steps": 500,
+        "optimizer": "adam",
+    }
+    # sweep_id = wandb.sweep(sweep_config, project="factcheckworthiness")
+    # wandb.agent(sweep_id, train, count=5)
+    train(config=config)
