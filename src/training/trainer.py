@@ -76,11 +76,11 @@ def train(config=None):
 
         optimizer = None
 
-        if config["optimizer"] == "adam":
+        if config.optimizer == "adam":
             optimizer = torch.optim.AdamW(
                 model.parameters(),
-                lr=config["learning_rate"],
-                weight_decay=config["weight_decay"],
+                lr=config.learning_rate,
+                weight_decay=config.weight_decay,
             )
 
         training_args = TrainingArguments(
@@ -89,12 +89,12 @@ def train(config=None):
             report_to="wandb",
             evaluation_strategy="epoch",
             eval_steps=0.1,
-            num_train_epochs=config["num_train_epochs"],
-            per_device_train_batch_size=config["per_device_train_batch_size"],
-            per_device_eval_batch_size=config["per_device_eval_batch_size"],
-            warmup_steps=config["warmup_steps"],
-            weight_decay=config["weight_decay"],
-            learning_rate=config["learning_rate"],
+            num_train_epochs=config.num_train_epochs,
+            per_device_train_batch_size=config.per_device_train_batch_size,
+            per_device_eval_batch_size=config.per_device_eval_batch_size,
+            warmup_steps=config.warmup_steps,
+            weight_decay=config.weight_decay,
+            learning_rate=config.learning_rate,
         )
         trainer = Trainer(
             model=model,
