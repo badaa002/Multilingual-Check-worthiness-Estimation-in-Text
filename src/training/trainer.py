@@ -92,29 +92,22 @@ def get_dataset(
     def resample_to_fixed_number(df, trans_df, n_samples=5000, lang="en"):
         ones = df[df["class_label"] == "Yes"]
         zeros = df[df["class_label"] == "No"]
+        half = n_samples // 2
 
-        if len(ones) < n_samples // 2:
-            num_to_add = n_samples - len(ones)
+        if len(ones) < half:
+            num_to_add = half - len(ones)
             ones = add_trans(ones, trans_df, num_to_add)
 
-        if len(zeros) < n_samples // 2:
-            num_to_add = n_samples - len(zeros)
+        if len(zeros) < half:
+            num_to_add = half - len(zeros)
             zeros = add_trans(zeros, trans_df, num_to_add)
 
         sets = []
         for dset in [ones, zeros]:
-            if len(dset) < n_samples // 2:
-                sets.append(
-                    resample(
-                        dset, replace=True, n_samples=n_samples // 2, random_state=567
-                    )
-                )
+            if len(dset) < half:
+                sets.append(resample(dset, replace=True, n_samples=half))
             else:
-                sets.append(
-                    resample(
-                        dset, replace=False, n_samples=n_samples // 2, random_state=567
-                    )
-                )
+                sets.append(resample(dset, replace=False, n_samples=half))
         return pd.concat(sets)
 
     langs = {
@@ -154,19 +147,35 @@ def get_dataset(
 
             if sample:
                 df_train = resample_to_fixed_number(train, trans, n_samples, lang=None)
-                df_test = resample_to_fixed_number(test, trans, 500, lang=None)
-                df_dev = resample_to_fixed_number(dev, trans, 500, lang=None)
+                df_test = (
+                    resample_to_fixed_number(test, trans, 500, lang=None)
+                    if len(test) < 500
+                    else test
+                )
+                df_dev = (
+                    resample_to_fixed_number(dev, trans, 500, lang=None)
+                    if len(dev) < 500
+                    else dev
+                )
 
             df_train = pd.concat([df_train, train])
             df_test = pd.concat([df_test, test])
             df_dev = pd.concat([df_dev, dev])
 
     else:
-        df_train, df_test, df_dev, df_trans = get_folder(lang, langs[lang], lang=lang)
+        df_train, df_test, df_dev, df_trans = get_folder(lang, langs[lang])
         if sample:
             df_train = resample_to_fixed_number(df_train, df_trans, n_samples)
-            df_test = resample_to_fixed_number(df_test, df_trans, 500)
-            df_dev = resample_to_fixed_number(df_dev, df_trans, 500)
+            df_test = (
+                resample_to_fixed_number(df_test, df_trans, 500)
+                if len(df_test) < 500
+                else df_test
+            )
+            df_dev = (
+                resample_to_fixed_number(df_dev, df_trans, 500)
+                if len(df_dev) < 500
+                else df_dev
+            )
 
     df_train = df_train.rename(columns={"class_label": "labels", "tweet_text": "text"})
     df_test = df_test.rename(columns={"class_label": "labels", "tweet_text": "text"})
@@ -190,7 +199,7 @@ def train(config=None):
         base_path = (
             "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text"
         )
-        # base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
+        base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
