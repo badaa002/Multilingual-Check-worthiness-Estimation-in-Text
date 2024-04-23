@@ -67,6 +67,10 @@ def train():
         base_path = (
             "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/"
         )
+        try:
+            print(f"Optimizer class: {config.optimizer}")
+        except Exception as e:
+            print(f"Optimizer dict: {config.get('optimizer', None)}")
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train = f"{dataset_path}/merged_train.tsv"
