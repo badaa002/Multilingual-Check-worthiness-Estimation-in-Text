@@ -61,7 +61,7 @@ def compute_metrics(p: EvalPrediction) -> dict:
 
 
 def train(config=None):
-    with wandb.init():
+    with wandb.init(config=config):
         save = False
         config = wandb.config
         base_path = (
@@ -147,4 +147,4 @@ if __name__ == "__main__":
         },
     }
     sweep_id = wandb.sweep(sweep_config, project="factcheckworthiness")
-    wandb.agent(sweep_id, train, count=5)
+    wandb.agent(sweep_id, train, count=1)
