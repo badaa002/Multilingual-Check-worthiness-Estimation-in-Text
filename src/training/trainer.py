@@ -66,7 +66,7 @@ def get_dataset(
     lang: Literal["en", "nl", "ar", "es", "all"],
     sample: bool = True,
     n_samples: int = 7000,
-) -> Dataset:
+) -> tuple[Dataset, Dataset, Dataset]:
 
     def get_folder(
         lang: str, files: dict
@@ -129,19 +129,34 @@ def get_dataset(
         },
     }
 
-    df = pd.DataFrame()
+    df_train = pd.DataFrame()
+    df_test = pd.DataFrame()
+    df_dev = pd.DataFrame()
     if lang == "all":
         for lang, files in langs.items():
-            lang_df = get_folder(lang, files)
-            df = pd.concat([df, lang_df])
-            if sample:
-                df = resample_to_fixed_number(df, n_samples)
-    else:
-        df = get_folder(lang, langs[lang])
-        if sample:
-            df = resample_to_fixed_number(df, n_samples)
+            train, test, dev = get_folder(lang, files)
 
-    return Dataset.from_pandas(df)
+            if sample:
+                df_train = resample_to_fixed_number(train, n_samples)
+                df_test = resample_to_fixed_number(test, n_samples)
+                df_dev = resample_to_fixed_number(dev, n_samples)
+
+            df_train = pd.concat([df_train, train])
+            df_test = pd.concat([df_test, test])
+            df_dev = pd.concat([df_dev, dev])
+
+    else:
+        df_train, df_test, df_dev = get_folder(lang, langs[lang])
+        if sample:
+            df_train = resample_to_fixed_number(df_train, n_samples)
+            df_test = resample_to_fixed_number(df_test, n_samples)
+            df_dev = resample_to_fixed_number(df_dev, n_samples)
+
+    return (
+        Dataset.from_pandas(df_train),
+        Dataset.from_pandas(df_test),
+        Dataset.from_pandas(df_dev),
+    )
 
 
 def train(config=None):
