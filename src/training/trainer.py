@@ -152,6 +152,10 @@ def get_dataset(
             df_test = resample_to_fixed_number(df_test, 500)
             df_dev = resample_to_fixed_number(df_dev, 500)
 
+    df_train = df_train.rename(columns={"class_label": "labels", "tweet_text": "text"})
+    df_test = df_test.rename(columns={"class_label": "labels", "tweet_text": "text"})
+    df_dev = df_dev.rename(columns={"class_label": "labels", "tweet_text": "text"})
+
     return (
         Dataset.from_pandas(df_train),
         Dataset.from_pandas(df_test),
@@ -163,16 +167,17 @@ def train(config=None):
     with wandb.init(config=config, project="dat550_project_lang") as run:
         save = True
         config = run.config
-        base_path = (
-            "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text"
-        )
+        # base_path = (
+        #     "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text"
+        # )
+        base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
             base_path=dataset_path, lang="en", sample=True, n_samples=7000
         )
-        tokenized_train = load_dataset(train).map(tokenize_function, batched=True)
-        tokenized_test = load_dataset(test).map(tokenize_function, batched=True)
+        tokenized_train = train.map(tokenize_function, batched=True)
+        tokenized_test = test.map(tokenize_function, batched=True)
 
         # optimizer = None
         # if config.optimizer and config.optimizer == "adam":
