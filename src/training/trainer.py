@@ -146,13 +146,13 @@ def get_dataset(
             train, test, dev, trans = get_folder(lang, files)
 
             if sample:
-                df_train = resample_to_fixed_number(train, trans, n_samples, lang=None)
-                df_test = (
+                train = resample_to_fixed_number(train, trans, n_samples, lang=None)
+                test = (
                     resample_to_fixed_number(test, trans, 500, lang=None)
                     if len(test) < 500
                     else test
                 )
-                df_dev = (
+                dev = (
                     resample_to_fixed_number(dev, trans, 500, lang=None)
                     if len(dev) < 500
                     else dev
@@ -177,13 +177,29 @@ def get_dataset(
                 else df_dev
             )
 
-    df_train = df_train.rename(columns={"class_label": "label", "tweet_text": "text"})
-    df_test = df_test.rename(columns={"class_label": "label", "tweet_text": "text"})
-    df_dev = df_dev.rename(columns={"class_label": "label", "tweet_text": "text"})
+    df_train = (
+        df_train.rename(columns={"class_label": "label", "tweet_text": "text"})
+        .sample(frac=1)
+        .reset_index(drop=True)
+    )
+    df_test = (
+        df_test.rename(columns={"class_label": "label", "tweet_text": "text"})
+        .sample(frac=1)
+        .reset_index(drop=True)
+    )
+    df_dev = (
+        df_dev.rename(columns={"class_label": "label", "tweet_text": "text"})
+        .sample(frac=1)
+        .reset_index(drop=True)
+    )
 
     df_train["label"] = df_train["label"].apply(lambda x: 1 if x == "Yes" else 0)
     df_test["label"] = df_test["label"].apply(lambda x: 1 if x == "Yes" else 0)
     df_dev["label"] = df_dev["label"].apply(lambda x: 1 if x == "Yes" else 0)
+
+    df_train = df_train.drop("tweet_id", axis=1)
+    df_test = df_test.drop("tweet_id", axis=1)
+    df_dev = df_dev.drop("tweet_id", axis=1)
 
     return (
         Dataset.from_pandas(df_train),
@@ -199,11 +215,11 @@ def train(config=None):
         base_path = (
             "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text"
         )
-        base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
+        # base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
-            base_path=dataset_path, lang="ar", sample=True, n_samples=20000
+            base_path=dataset_path, lang="all", sample=True, n_samples=40000
         )
         tokenized_train = train.map(tokenize_function, batched=True)
         tokenized_test = test.map(tokenize_function, batched=True)
