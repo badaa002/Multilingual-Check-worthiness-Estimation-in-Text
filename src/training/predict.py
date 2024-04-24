@@ -24,7 +24,7 @@ en_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimati
 es_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run19/"
 du_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run20/"
 ar_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run21/"
-full_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run16"
+full_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run22"
 
 
 def load_dataset(path: str) -> Dataset:
