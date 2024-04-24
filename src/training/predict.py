@@ -14,21 +14,15 @@ from datasets import Dataset
 
 tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
 
-en_dataset_path = (
-    "../data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
-)
-du_dataset_path = (
-    "../data/processed/processed_CT24_checkworthy_dutch/processed_dutch_dev_test.tsv"
-)
-es_dataset_path = "../data/processed/processed_CT24_checkworthy_spanish/processed_spanish_dev_test.tsv"
-ar_dataset_path = (
-    "../data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
-)
+en_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
+du_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_dutch/processed_dutch_dev_test.tsv"
+es_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_spanish/processed_spanish_dev_test.tsv"
+ar_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
 
-en_model_path = "../results/run1"
-es_model_path = "../results/run2"
-du_model_path = "../results/run3"
-ar_model_path = "../results/run4"
+en_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run1/"
+es_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run2/"
+du_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run3/"
+ar_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run4/"
 
 
 datasets = [
