@@ -214,7 +214,6 @@ def train(config=None):
         base_path = (
             "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text"
         )
-        # base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
@@ -223,13 +222,13 @@ def train(config=None):
         tokenized_train = train.map(tokenize_function, batched=True)
         tokenized_test = test.map(tokenize_function, batched=True)
 
-        # optimizer = None
-        # if config.optimizer and config.optimizer == "adam":
-        #     optimizer = torch.optim.AdamW(
-        #         model.parameters(),
-        #         lr=config.learning_rate,
-        #         weight_decay=config.weight_decay,
-        #     )
+        optimizer = None
+        if config.optimizer and config.optimizer == "adam":
+            optimizer = torch.optim.AdamW(
+                model.parameters(),
+                lr=config.learning_rate,
+                weight_decay=config.weight_decay,
+            )
 
         training_args = TrainingArguments(
             output_dir=save_path,
@@ -250,7 +249,7 @@ def train(config=None):
             train_dataset=tokenized_train,
             eval_dataset=tokenized_test,
             compute_metrics=compute_metrics,
-            # optimizers=(optimizer if optimizer else None, None),
+            optimizers=(optimizer if optimizer else None, None),
         )
         trainer.train()
         if save:
