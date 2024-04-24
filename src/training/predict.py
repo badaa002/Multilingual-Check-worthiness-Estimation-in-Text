@@ -25,14 +25,6 @@ du_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimati
 ar_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run4/"
 
 
-datasets = [
-    ("en", en_dataset_path, en_model_path),
-    ("es", es_dataset_path, es_model_path),
-    ("nl", du_dataset_path, du_model_path),
-    ("ar", ar_dataset_path, ar_model_path),
-]
-
-
 def load_dataset(path: str) -> Dataset:
     try:
         df = pd.read_csv(path, sep="\t")
@@ -54,7 +46,7 @@ def compute_metrics(p: EvalPrediction) -> dict:
     return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
 
-for lang, dataset_path, model_path in datasets:
+def predict(model_path: str, dataset_path: str, lang: str):
 
     model = AutoModelForSequenceClassification.from_pretrained(model_path, num_labels=2)
     dataset = load_dataset(dataset_path)
@@ -66,10 +58,23 @@ for lang, dataset_path, model_path in datasets:
 
     dataset = dataset.map(tokenize_function, batched=True)
 
+    trainer_args = TrainingArguments(
+        report_to="none",
+    )
+
     trainer = Trainer(
         model=model, compute_metrics=compute_metrics, eval_dataset=dataset
     )
     trainer.evaluate()
     predictions = trainer.predict(dataset)
-    print(predictions)
-    print(f"Results: {predictions.metrics}")
+    print(f"Results for {lang}:\n{predictions.metrics}")
+
+
+if __name__ == "__main__":
+    datasets = [
+        ("en", en_dataset_path, en_model_path),
+        ("es", es_dataset_path, es_model_path),
+        ("nl", du_dataset_path, du_model_path),
+        ("ar", ar_dataset_path, ar_model_path),
+    ]
+    predict(datasets[0][2], datasets[0][1], datasets[0][0])
