@@ -76,8 +76,8 @@ As baselines, we employ GPT-4 or open-source models such as Llama2 or Mistral fo
 1. Clone this repository.
 2. Install the necessary dependencies listed in `requirements.txt`.
 3. Preprocess the data if required.
-4. Train the transformer models using the provided training split.
-5. Evaluate the trained models on the dev-test split.
+4. Train the transformer models using `src/training/train.py`.
+5. Evaluate the trained models on the dev-test split using `src/training/predict.py`.
 6. Experiment with different baselines and compare their performance.
 
 
