@@ -61,7 +61,7 @@ def predict(model_path: str, dataset_path: str, lang: str):
     )
     trainer.evaluate()
     predictions = trainer.predict(dataset)
-    print("Predictions: ", predictions)
+    print("Predictions: ", predictions.label_ids)
     print(f"Results for {lang}:\n{predictions.metrics}")
 
 
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     #     ("es", es_dataset_path, es_model_path),
     # ]
     datasets = [
-        ("all", all_data_path, en_model_path),
+        ("all", all_data_path, es_model_path),
     ]
     for lang, dataset, model in datasets:
         predict(model, dataset, lang)
