@@ -61,7 +61,7 @@ def predict(model_path: str, dataset_path: str, lang: str):
     )
     trainer.evaluate()
     predictions = trainer.predict(dataset)
-    print("Predictions: ", predictions.predictions)
+    print("Predictions: ", predictions)
     print(f"Results for {lang}:\n{predictions.metrics}")
 
 
