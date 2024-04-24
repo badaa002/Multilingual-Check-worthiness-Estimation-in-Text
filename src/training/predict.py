@@ -19,10 +19,10 @@ du_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estima
 es_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_spanish/processed_spanish_dev_test.tsv"
 ar_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
 
-en_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run1/"
-es_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run2/"
-du_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run3/"
-ar_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run4/"
+en_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run18/"
+es_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run19/"
+du_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run20/"
+ar_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run21/"
 
 
 def load_dataset(path: str) -> Dataset:
