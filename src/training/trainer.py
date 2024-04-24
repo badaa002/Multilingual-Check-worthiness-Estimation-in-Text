@@ -219,7 +219,7 @@ def train(config=None):
         dataset_path, save_path = get_paths(base_path=base_path)
 
         train, test, dev_test = get_dataset(
-            base_path=dataset_path, lang="all", sample=True, n_samples=40000
+            base_path=dataset_path, lang="all", sample=True, n_samples=10000
         )
         tokenized_train = train.map(tokenize_function, batched=True)
         tokenized_test = test.map(tokenize_function, batched=True)
