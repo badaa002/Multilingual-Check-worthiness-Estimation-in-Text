@@ -59,6 +59,13 @@ for lang, dataset_path, model_path in datasets:
     model = AutoModelForSequenceClassification.from_pretrained(model_path, num_labels=2)
     dataset = load_dataset(dataset_path)
 
+    def tokenize_function(examples):
+        return tokenizer(
+            examples["text"], padding="max_length", truncation=True, max_length=512
+        )
+
+    dataset = dataset.map(tokenize_function, batched=True)
+
     trainer = Trainer(
         model=model, compute_metrics=compute_metrics, eval_dataset=dataset
     )
