@@ -408,7 +408,6 @@ tweet_id	tweet_text	class_label	text_length	hashtags	mentions	text_length_catego
 84792	O no?	No	2	[]	[]	0-10	0	0	0.0	0
 114259	Pero como decía el hecho de que hayamos tenido tres días festivos entre medias no nos permite interpretar todavía muy bien esta información.	No	23	[]	[]	21-30	0	0	0.0	4
 89567	Incluso cogió una comanda.	No	4	[]	[]	0-10	0	0	0.0	4
-1579074397595488256	Del Govern de Cataluña sobran todos los separatistas. Pedimos al PSC que deje lanzar un flotador a ERC. Es el momento del cambio en Cataluña. Debe haber elecciones. ¡Lo cuenta @<USER> !	No	34	[]	['@carrizosacarlos!']	31-40	0	0	0.0	4
 66240	Pero desde el punto de vista del trabajador ya que es un lo estamos disponiendo son los artes y nunca en la vida jamás historia ha habido tal gasto posiblemente algunos sectores.	No	40	[]	[]	31-40	0	0	0.0	1
 1579420385745199105	La mejor noticia del día: verte de vuelta querida @<USER>	No	12	[]	['@anarosaq']	11-20	0	0	0.0	1
 1579804030788055041	#España y #Portugal están en una posición óptima para impulsar la profundización del proyecto europeo. La guerra de Putin está suponiendo un desafío #UE. Debemos reforzar nuestra unidad defender paz los #DDHH #democracia valores #Europa.	No	45	['#España', '#Portugal', '#UE.', '#DDHH,', '#democracia', '#Europa.']	[]	41-50	0	6	0.0	1

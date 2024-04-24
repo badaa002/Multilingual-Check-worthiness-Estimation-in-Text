@@ -200,10 +200,6 @@ def get_dataset(
     df_test["label"] = df_test["label"].apply(lambda x: 1 if x == "Yes" else 0)
     df_dev["label"] = df_dev["label"].apply(lambda x: 1 if x == "Yes" else 0)
 
-    df_train = df_train.drop("tweet_id", axis=1)
-    df_test = df_test.drop("tweet_id", axis=1)
-    df_dev = df_dev.drop("tweet_id", axis=1)
-
     return (
         Dataset.from_pandas(df_train),
         Dataset.from_pandas(df_test),
