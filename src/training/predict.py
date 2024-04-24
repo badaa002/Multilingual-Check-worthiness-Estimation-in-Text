@@ -31,6 +31,7 @@ def load_dataset(path: str) -> Dataset:
         df = df.rename(columns={"class_label": "label", "tweet_text": "text"})
         df["label"] = df["label"].apply(lambda x: 1 if x == "Yes" else 0)
         df = df.drop("tweet_id", axis=1)
+        df = df.dropna(subset=["text"])
     except Exception as e:
         print(f"Error loading dataset: {e}")
         return None
@@ -48,17 +49,16 @@ def compute_metrics(p: EvalPrediction) -> dict:
 
 def predict(model_path: str, dataset_path: str, lang: str):
 
-    model = AutoModelForSequenceClassification.from_pretrained(model_path, num_labels=2)
     dataset = load_dataset(dataset_path)
 
     def tokenize_function(examples):
-        print(examples[0])
         return tokenizer(
             examples["text"], padding="max_length", truncation=True, max_length=512
         )
 
     dataset = dataset.map(tokenize_function, batched=True)
 
+    model = AutoModelForSequenceClassification.from_pretrained(model_path, num_labels=2)
     trainer = Trainer(
         model=model, compute_metrics=compute_metrics, eval_dataset=dataset
     )
