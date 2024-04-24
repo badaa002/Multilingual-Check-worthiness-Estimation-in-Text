@@ -60,7 +60,7 @@ def compute_metrics(p: EvalPrediction) -> dict:
     return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
 
 
-for lang, dataset_path, model_path in datasets.items():
+for lang, dataset_path, model_path in datasets:
 
     model = AutoModelForSequenceClassification.from_pretrained(model_path, num_labels=2)
     dataset = load_dataset(dataset_path)
