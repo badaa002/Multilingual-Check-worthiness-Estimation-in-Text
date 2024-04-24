@@ -72,7 +72,7 @@ if __name__ == "__main__":
     #     ("es", es_dataset_path, es_model_path),
     # ]
     datasets = [
-        ("all", all_data_path, full_model_path),
+        ("all", en_dataset_path, full_model_path),
     ]
     for lang, dataset, model in datasets:
         predict(model, dataset, lang)
