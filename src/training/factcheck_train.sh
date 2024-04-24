@@ -12,4 +12,4 @@ conda activate transformer_cuda12
 PATH=~/.local/bin:$PATH
 echo $PATH
 # Run the Python script that uses the GPU
-TOKENIZERS_PARALLELISM=false python -u trainer.py
+TOKENIZERS_PARALLELISM=false python -u predict.py
