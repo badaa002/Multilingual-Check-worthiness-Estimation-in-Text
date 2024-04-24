@@ -58,10 +58,6 @@ def predict(model_path: str, dataset_path: str, lang: str):
 
     dataset = dataset.map(tokenize_function, batched=True)
 
-    trainer_args = TrainingArguments(
-        report_to="none",
-    )
-
     trainer = Trainer(
         model=model, compute_metrics=compute_metrics, eval_dataset=dataset
     )
@@ -77,4 +73,5 @@ if __name__ == "__main__":
         ("nl", du_dataset_path, du_model_path),
         ("ar", ar_dataset_path, ar_model_path),
     ]
-    predict(datasets[0][2], datasets[0][1], datasets[0][0])
+    for lang, dataset, model in datasets:
+        predict(model, dataset, lang)
