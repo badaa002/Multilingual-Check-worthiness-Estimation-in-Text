@@ -70,9 +70,9 @@ def predict(model_path: str, dataset_path: str, lang: str):
 if __name__ == "__main__":
     datasets = [
         ("en", en_dataset_path, en_model_path),
-        ("es", es_dataset_path, es_model_path),
         ("nl", du_dataset_path, du_model_path),
         ("ar", ar_dataset_path, ar_model_path),
+        ("es", es_dataset_path, es_model_path),
     ]
     for lang, dataset, model in datasets:
         predict(model, dataset, lang)
