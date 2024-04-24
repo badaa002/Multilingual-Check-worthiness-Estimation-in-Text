@@ -14,7 +14,7 @@ from datasets import Dataset
 
 tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large")
 
-en_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
+en_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_arabic/processed_dev_test.tsv"
 du_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_dutch/processed_dutch_dev_test.tsv"
 es_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_spanish/processed_spanish_dev_test.tsv"
 ar_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
@@ -52,6 +52,7 @@ def predict(model_path: str, dataset_path: str, lang: str):
     dataset = load_dataset(dataset_path)
 
     def tokenize_function(examples):
+        print(examples[0])
         return tokenizer(
             examples["text"], padding="max_length", truncation=True, max_length=512
         )
