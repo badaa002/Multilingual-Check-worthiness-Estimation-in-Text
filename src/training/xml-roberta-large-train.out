@@ -1,0 +1,257 @@
+prepending to LD_LIBRARY_PATH: /usr/local/_cuda/cuda-12.2.0_ubuntu22/lib64
+
+
+A GPU-accelerated library of primitives for deep neural networks, https://developer.nvidia.com/cudnn
+prepending to __UENV: cudnn-12.x-8.8.0
+prepending to LD_LIBRARY_PATH: /usr/local/_cuda/cudnn-12.x-8.8.0/lib
+
+
+
+/home/stud/emartin/.local/bin:/home/stud/emartin/.conda/envs/transformer_cuda12/bin:/opt/miniconda39/condabin:/opt/miniconda39/bin:/usr/local/_cuda/cuda-12.2.0_ubuntu22/bin:/xu/bin:/home/drift/bin:/opt/uis/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+Map: 100%|██████████| 50777/50777 [00:11<00:00, 4259.67 examples/s]
+Map: 100%|██████████| 7377/7377 [00:01<00:00, 3753.48 examples/s]
+Map: 100%|██████████| 6484/6484 [00:01<00:00, 4076.63 examples/s]
+wandb: Currently logged in as: e-martin. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.16.6
+wandb: Run data is saved locally in /mnt/beegfs/home/emartin/Multilingual-Check-worthiness-Estimation-in-Text/src/training/wandb/run-20240419_040047-si1ipc53
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run warm-glitter-17
+wandb: ⭐️ View project at https://wandb.ai/e-martin/dat550_project_base_full
+wandb: 🚀 View run at https://wandb.ai/e-martin/dat550_project_base_full/runs/si1ipc53
+Some weights of XLMRobertaForSequenceClassification were not initialized from the model checkpoint at FacebookAI/xlm-roberta-large and are newly initialized: ['classifier.dense.bias', 'classifier.dense.weight', 'classifier.out_proj.bias', 'classifier.out_proj.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+/home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages/accelerate/accelerator.py:436: FutureWarning: Passing the following arguments to `Accelerator` is deprecated and will be removed in version 1.0 of Accelerate: dict_keys(['dispatch_batches', 'split_batches', 'even_batches', 'use_seedable_sampler']). Please pass an `accelerate.DataLoaderConfiguration` instead: 
+dataloader_config = DataLoaderConfiguration(dispatch_batches=None, split_batches=False, even_batches=True, use_seedable_sampler=True)
+  warnings.warn(
+{'loss': 0.5481, 'grad_norm': 2.2403836250305176, 'learning_rate': 4.9716267339218156e-05, 'epoch': 0.03}
+{'loss': 0.5515, 'grad_norm': 3.3550362586975098, 'learning_rate': 4.9401008827238335e-05, 'epoch': 0.06}
+{'loss': 0.5646, 'grad_norm': 3.8545103073120117, 'learning_rate': 4.9085750315258514e-05, 'epoch': 0.09}
+{'loss': 0.5486, 'grad_norm': 1.1469491720199585, 'learning_rate': 4.8770491803278687e-05, 'epoch': 0.13}
+{'loss': 0.5446, 'grad_norm': 2.926508903503418, 'learning_rate': 4.8455233291298866e-05, 'epoch': 0.16}
+{'loss': 0.5177, 'grad_norm': 3.919410467147827, 'learning_rate': 4.813997477931904e-05, 'epoch': 0.19}
+{'loss': 0.5354, 'grad_norm': 4.616078853607178, 'learning_rate': 4.782471626733922e-05, 'epoch': 0.22}
+{'loss': 0.5583, 'grad_norm': 2.9008028507232666, 'learning_rate': 4.75094577553594e-05, 'epoch': 0.25}
+{'loss': 0.5363, 'grad_norm': 4.898196220397949, 'learning_rate': 4.719419924337957e-05, 'epoch': 0.28}
+{'loss': 0.5292, 'grad_norm': 3.597411870956421, 'learning_rate': 4.687894073139975e-05, 'epoch': 0.32}
+{'loss': 0.5757, 'grad_norm': 1.9038044214248657, 'learning_rate': 4.656368221941992e-05, 'epoch': 0.35}
+{'loss': 0.5307, 'grad_norm': 1.5439614057540894, 'learning_rate': 4.62484237074401e-05, 'epoch': 0.38}
+{'loss': 0.5382, 'grad_norm': 5.58938455581665, 'learning_rate': 4.593316519546028e-05, 'epoch': 0.41}
+{'loss': 0.547, 'grad_norm': 1.9553030729293823, 'learning_rate': 4.561790668348045e-05, 'epoch': 0.44}
+{'loss': 0.521, 'grad_norm': 2.9710400104522705, 'learning_rate': 4.530264817150063e-05, 'epoch': 0.47}
+{'loss': 0.5314, 'grad_norm': 2.1842257976531982, 'learning_rate': 4.4987389659520804e-05, 'epoch': 0.5}
+{'loss': 0.5372, 'grad_norm': 0.9809966683387756, 'learning_rate': 4.467213114754098e-05, 'epoch': 0.54}
+{'loss': 0.5631, 'grad_norm': 2.046247959136963, 'learning_rate': 4.435687263556116e-05, 'epoch': 0.57}
+{'loss': 0.5231, 'grad_norm': 2.242955207824707, 'learning_rate': 4.4041614123581335e-05, 'epoch': 0.6}
+{'loss': 0.5172, 'grad_norm': 5.549149513244629, 'learning_rate': 4.3726355611601514e-05, 'epoch': 0.63}
+{'loss': 0.5292, 'grad_norm': 1.9367468357086182, 'learning_rate': 4.3411097099621686e-05, 'epoch': 0.66}
+{'loss': 0.5387, 'grad_norm': 2.4996867179870605, 'learning_rate': 4.3095838587641866e-05, 'epoch': 0.69}
+{'loss': 0.5315, 'grad_norm': 2.186882495880127, 'learning_rate': 4.2780580075662045e-05, 'epoch': 0.72}
+{'loss': 0.5153, 'grad_norm': 2.034868001937866, 'learning_rate': 4.246532156368222e-05, 'epoch': 0.76}
+{'loss': 0.5318, 'grad_norm': 1.5468332767486572, 'learning_rate': 4.21500630517024e-05, 'epoch': 0.79}
+{'loss': 0.5315, 'grad_norm': 2.5279104709625244, 'learning_rate': 4.183480453972257e-05, 'epoch': 0.82}
+{'loss': 0.5233, 'grad_norm': 1.5889683961868286, 'learning_rate': 4.151954602774275e-05, 'epoch': 0.85}
+{'loss': 0.549, 'grad_norm': 4.7065229415893555, 'learning_rate': 4.120428751576293e-05, 'epoch': 0.88}
+{'loss': 0.5523, 'grad_norm': 4.010918140411377, 'learning_rate': 4.08890290037831e-05, 'epoch': 0.91}
+{'loss': 0.5302, 'grad_norm': 4.5699143409729, 'learning_rate': 4.057377049180328e-05, 'epoch': 0.95}
+{'loss': 0.5302, 'grad_norm': 2.6616017818450928, 'learning_rate': 4.025851197982345e-05, 'epoch': 0.98}
+ 20%|██        | 3174/15870 [59:48<3:26:27,  1.02Preds: [0 0 0 ... 0 0 0]
+Num ones:  0███| 462/462 [02:48<00:00,  3.39it/s]
+Num zeroes:  7377
+/home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+{'eval_loss': 0.5007760524749756, 'eval_accuracy': 0.8027653517690118, 'eval_f1': 0.0, 'eval_precision': 0.0, 'eval_recall': 0.0, 'eval_runtime': 169.4212, 'eval_samples_per_second': 43.542, 'eval_steps_per_second': 2.727, 'epoch': 1.0}    
+{'loss': 0.5232, 'grad_norm': 1.5184520483016968, 'learning_rate': 3.994325346784363e-05, 'epoch': 1.01}
+{'loss': 0.5204, 'grad_norm': 6.456000328063965, 'learning_rate': 3.962799495586381e-05, 'epoch': 1.04}
+{'loss': 0.5235, 'grad_norm': 1.5176109075546265, 'learning_rate': 3.931273644388398e-05, 'epoch': 1.07}
+{'loss': 0.5182, 'grad_norm': 4.151188373565674, 'learning_rate': 3.899747793190416e-05, 'epoch': 1.1}
+{'loss': 0.5151, 'grad_norm': 4.198502063751221, 'learning_rate': 3.8682219419924335e-05, 'epoch': 1.13}
+{'loss': 0.529, 'grad_norm': 3.1108412742614746, 'learning_rate': 3.8366960907944514e-05, 'epoch': 1.17}
+{'loss': 0.5446, 'grad_norm': 1.6752694845199585, 'learning_rate': 3.805170239596469e-05, 'epoch': 1.2}
+{'loss': 0.5209, 'grad_norm': 4.793926239013672, 'learning_rate': 3.7736443883984866e-05, 'epoch': 1.23}
+{'loss': 0.5081, 'grad_norm': 6.202229022979736, 'learning_rate': 3.7421185372005045e-05, 'epoch': 1.26}
+{'loss': 0.5154, 'grad_norm': 3.2829947471618652, 'learning_rate': 3.7105926860025224e-05, 'epoch': 1.29}
+{'loss': 0.5392, 'grad_norm': 3.045208692550659, 'learning_rate': 3.67906683480454e-05, 'epoch': 1.32}
+{'loss': 0.5252, 'grad_norm': 1.3070844411849976, 'learning_rate': 3.6475409836065576e-05, 'epoch': 1.35}
+{'loss': 0.5115, 'grad_norm': 4.563176155090332, 'learning_rate': 3.616015132408575e-05, 'epoch': 1.39}
+{'loss': 0.5226, 'grad_norm': 2.799190044403076, 'learning_rate': 3.584489281210593e-05, 'epoch': 1.42}
+{'loss': 0.5157, 'grad_norm': 1.2149449586868286, 'learning_rate': 3.552963430012611e-05, 'epoch': 1.45}
+{'loss': 0.5082, 'grad_norm': 1.9212337732315063, 'learning_rate': 3.521437578814628e-05, 'epoch': 1.48}
+{'loss': 0.534, 'grad_norm': 1.480220913887024, 'learning_rate': 3.489911727616646e-05, 'epoch': 1.51}
+{'loss': 0.5489, 'grad_norm': 4.5954437255859375, 'learning_rate': 3.458385876418663e-05, 'epoch': 1.54}
+{'loss': 0.5194, 'grad_norm': 3.5036849975585938, 'learning_rate': 3.426860025220681e-05, 'epoch': 1.58}
+{'loss': 0.5177, 'grad_norm': 1.599730372428894, 'learning_rate': 3.395334174022699e-05, 'epoch': 1.61}
+{'loss': 0.5431, 'grad_norm': 2.179666757583618, 'learning_rate': 3.363808322824716e-05, 'epoch': 1.64}
+{'loss': 0.544, 'grad_norm': 3.403331756591797, 'learning_rate': 3.332282471626734e-05, 'epoch': 1.67}
+{'loss': 0.5432, 'grad_norm': 1.5096091032028198, 'learning_rate': 3.3007566204287514e-05, 'epoch': 1.7}
+{'loss': 0.5338, 'grad_norm': 1.341728687286377, 'learning_rate': 3.269230769230769e-05, 'epoch': 1.73}
+{'loss': 0.5507, 'grad_norm': 2.651770830154419, 'learning_rate': 3.237704918032787e-05, 'epoch': 1.76}
+{'loss': 0.5466, 'grad_norm': 3.2347493171691895, 'learning_rate': 3.2061790668348045e-05, 'epoch': 1.8}
+{'loss': 0.5351, 'grad_norm': 3.4554316997528076, 'learning_rate': 3.1746532156368224e-05, 'epoch': 1.83}
+{'loss': 0.5431, 'grad_norm': 3.443242311477661, 'learning_rate': 3.1431273644388397e-05, 'epoch': 1.86}
+{'loss': 0.54, 'grad_norm': 0.9830359220504761, 'learning_rate': 3.1116015132408576e-05, 'epoch': 1.89}
+{'loss': 0.4976, 'grad_norm': 3.4867382049560547, 'learning_rate': 3.0800756620428755e-05, 'epoch': 1.92}
+{'loss': 0.5226, 'grad_norm': 1.401402235031128, 'learning_rate': 3.0485498108448928e-05, 'epoch': 1.95}
+{'loss': 0.5227, 'grad_norm': 3.976407289505005, 'learning_rate': 3.0170239596469107e-05, 'epoch': 1.98}
+ 40%|████      | 6348/15870 [2:02:25<2:35:19,  1.Preds: [0 0 0 ... 0 0 0]
+Num ones:  0██▉| 461/462 [02:48<00:00,  2.74it/s]
+Num zeroes:  7377
+/home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+{'eval_loss': 0.5159004330635071, 'eval_accuracy': 0.8027653517690118, 'eval_f1': 0.0, 'eval_precision': 0.0, 'eval_recall': 0.0, 'eval_runtime': 169.3269, 'eval_samples_per_second': 43.567, 'eval_steps_per_second': 2.728, 'epoch': 2.0}    
+{'loss': 0.5337, 'grad_norm': 5.689237117767334, 'learning_rate': 2.985498108448928e-05, 'epoch': 2.02}
+{'loss': 0.5392, 'grad_norm': 1.0369418859481812, 'learning_rate': 2.953972257250946e-05, 'epoch': 2.05}
+{'loss': 0.524, 'grad_norm': 1.9169920682907104, 'learning_rate': 2.9224464060529638e-05, 'epoch': 2.08}
+{'loss': 0.5237, 'grad_norm': 3.6761155128479004, 'learning_rate': 2.890920554854981e-05, 'epoch': 2.11}
+{'loss': 0.4995, 'grad_norm': 2.7419707775115967, 'learning_rate': 2.859394703656999e-05, 'epoch': 2.14}
+{'loss': 0.5327, 'grad_norm': 5.160358428955078, 'learning_rate': 2.8278688524590162e-05, 'epoch': 2.17}
+{'loss': 0.5189, 'grad_norm': 3.946359872817993, 'learning_rate': 2.796343001261034e-05, 'epoch': 2.21}
+{'loss': 0.5122, 'grad_norm': 1.863663911819458, 'learning_rate': 2.764817150063052e-05, 'epoch': 2.24}
+{'loss': 0.533, 'grad_norm': 1.5369380712509155, 'learning_rate': 2.7332912988650693e-05, 'epoch': 2.27}
+{'loss': 0.5073, 'grad_norm': 2.2984442710876465, 'learning_rate': 2.7017654476670872e-05, 'epoch': 2.3}
+{'loss': 0.5153, 'grad_norm': 2.634667158126831, 'learning_rate': 2.6702395964691045e-05, 'epoch': 2.33}
+{'loss': 0.5129, 'grad_norm': 1.2976833581924438, 'learning_rate': 2.6387137452711224e-05, 'epoch': 2.36}
+{'loss': 0.5307, 'grad_norm': 2.757158041000366, 'learning_rate': 2.6071878940731403e-05, 'epoch': 2.39}
+{'loss': 0.5308, 'grad_norm': 3.899294376373291, 'learning_rate': 2.5756620428751576e-05, 'epoch': 2.43}
+{'loss': 0.5299, 'grad_norm': 1.1281745433807373, 'learning_rate': 2.5441361916771755e-05, 'epoch': 2.46}
+{'loss': 0.5075, 'grad_norm': 1.8548239469528198, 'learning_rate': 2.5126103404791927e-05, 'epoch': 2.49}
+{'loss': 0.5259, 'grad_norm': 4.517045974731445, 'learning_rate': 2.4810844892812107e-05, 'epoch': 2.52}
+{'loss': 0.5317, 'grad_norm': 2.980090618133545, 'learning_rate': 2.4495586380832283e-05, 'epoch': 2.55}
+{'loss': 0.5298, 'grad_norm': 2.8339083194732666, 'learning_rate': 2.418032786885246e-05, 'epoch': 2.58}
+{'loss': 0.5291, 'grad_norm': 1.3213789463043213, 'learning_rate': 2.3865069356872638e-05, 'epoch': 2.61}
+{'loss': 0.506, 'grad_norm': 1.9804432392120361, 'learning_rate': 2.3549810844892814e-05, 'epoch': 2.65}
+{'loss': 0.5187, 'grad_norm': 4.091495990753174, 'learning_rate': 2.323455233291299e-05, 'epoch': 2.68}
+{'loss': 0.5317, 'grad_norm': 1.4427472352981567, 'learning_rate': 2.2919293820933165e-05, 'epoch': 2.71}
+{'loss': 0.5322, 'grad_norm': 2.624695062637329, 'learning_rate': 2.260403530895334e-05, 'epoch': 2.74}
+{'loss': 0.5586, 'grad_norm': 3.0098726749420166, 'learning_rate': 2.228877679697352e-05, 'epoch': 2.77}
+{'loss': 0.5314, 'grad_norm': 1.811203122138977, 'learning_rate': 2.1973518284993696e-05, 'epoch': 2.8}
+{'loss': 0.5247, 'grad_norm': 3.3036904335021973, 'learning_rate': 2.1658259773013872e-05, 'epoch': 2.84}
+{'loss': 0.5125, 'grad_norm': 4.109819412231445, 'learning_rate': 2.1343001261034048e-05, 'epoch': 2.87}
+{'loss': 0.5186, 'grad_norm': 1.8912503719329834, 'learning_rate': 2.1027742749054224e-05, 'epoch': 2.9}
+{'loss': 0.501, 'grad_norm': 2.962818145751953, 'learning_rate': 2.0712484237074403e-05, 'epoch': 2.93}
+{'loss': 0.5069, 'grad_norm': 2.6917221546173096, 'learning_rate': 2.039722572509458e-05, 'epoch': 2.96}
+{'loss': 0.5225, 'grad_norm': 1.426782488822937, 'learning_rate': 2.0081967213114755e-05, 'epoch': 2.99}
+ 60%|██████    | 9522/15870 [3:05:12<1:43:19,  1.Preds: [0 0 0 ... 0 0 0]
+Num ones:  0██▉| 461/462 [02:48<00:00,  2.74it/s]
+Num zeroes:  7377
+/home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+{'eval_loss': 0.6780353784561157, 'eval_accuracy': 0.8027653517690118, 'eval_f1': 0.0, 'eval_precision': 0.0, 'eval_recall': 0.0, 'eval_runtime': 169.1743, 'eval_samples_per_second': 43.606, 'eval_steps_per_second': 2.731, 'epoch': 3.0}    
+{'loss': 0.5254, 'grad_norm': 2.3362529277801514, 'learning_rate': 1.976670870113493e-05, 'epoch': 3.02}
+{'loss': 0.5069, 'grad_norm': 1.7075108289718628, 'learning_rate': 1.9451450189155107e-05, 'epoch': 3.06}
+{'loss': 0.5358, 'grad_norm': 2.194667339324951, 'learning_rate': 1.9136191677175286e-05, 'epoch': 3.09}
+{'loss': 0.5243, 'grad_norm': 1.4643664360046387, 'learning_rate': 1.8820933165195462e-05, 'epoch': 3.12}
+{'loss': 0.5338, 'grad_norm': 1.7341831922531128, 'learning_rate': 1.8505674653215638e-05, 'epoch': 3.15}
+{'loss': 0.4977, 'grad_norm': 2.157829761505127, 'learning_rate': 1.8190416141235813e-05, 'epoch': 3.18}
+{'loss': 0.519, 'grad_norm': 1.1061534881591797, 'learning_rate': 1.787515762925599e-05, 'epoch': 3.21}
+{'loss': 0.5127, 'grad_norm': 1.7846827507019043, 'learning_rate': 1.755989911727617e-05, 'epoch': 3.25}
+{'loss': 0.5008, 'grad_norm': 3.6460721492767334, 'learning_rate': 1.7244640605296344e-05, 'epoch': 3.28}
+{'loss': 0.5298, 'grad_norm': 3.156956434249878, 'learning_rate': 1.692938209331652e-05, 'epoch': 3.31}
+{'loss': 0.5251, 'grad_norm': 5.2886223793029785, 'learning_rate': 1.6614123581336696e-05, 'epoch': 3.34}
+{'loss': 0.527, 'grad_norm': 3.1384737491607666, 'learning_rate': 1.6298865069356872e-05, 'epoch': 3.37}
+{'loss': 0.5169, 'grad_norm': 1.0276708602905273, 'learning_rate': 1.598360655737705e-05, 'epoch': 3.4}
+{'loss': 0.5082, 'grad_norm': 2.0335772037506104, 'learning_rate': 1.5668348045397227e-05, 'epoch': 3.43}
+{'loss': 0.5246, 'grad_norm': 1.4760158061981201, 'learning_rate': 1.5353089533417403e-05, 'epoch': 3.47}
+{'loss': 0.5029, 'grad_norm': 1.2644929885864258, 'learning_rate': 1.5037831021437579e-05, 'epoch': 3.5}
+{'loss': 0.5149, 'grad_norm': 2.4371416568756104, 'learning_rate': 1.4722572509457755e-05, 'epoch': 3.53}
+{'loss': 0.5319, 'grad_norm': 1.24066162109375, 'learning_rate': 1.4407313997477934e-05, 'epoch': 3.56}
+{'loss': 0.526, 'grad_norm': 2.3574342727661133, 'learning_rate': 1.409205548549811e-05, 'epoch': 3.59}
+{'loss': 0.5322, 'grad_norm': 2.728029489517212, 'learning_rate': 1.3776796973518286e-05, 'epoch': 3.62}
+{'loss': 0.5427, 'grad_norm': 2.4827840328216553, 'learning_rate': 1.3461538461538462e-05, 'epoch': 3.65}
+{'loss': 0.5224, 'grad_norm': 3.667283773422241, 'learning_rate': 1.3146279949558638e-05, 'epoch': 3.69}
+{'loss': 0.5086, 'grad_norm': 1.5611542463302612, 'learning_rate': 1.2831021437578817e-05, 'epoch': 3.72}
+{'loss': 0.5143, 'grad_norm': 1.5196725130081177, 'learning_rate': 1.2515762925598993e-05, 'epoch': 3.75}
+{'loss': 0.4988, 'grad_norm': 1.246885061264038, 'learning_rate': 1.2200504413619169e-05, 'epoch': 3.78}
+{'loss': 0.5068, 'grad_norm': 2.326932668685913, 'learning_rate': 1.1885245901639344e-05, 'epoch': 3.81}
+{'loss': 0.5121, 'grad_norm': 2.6929147243499756, 'learning_rate': 1.1569987389659522e-05, 'epoch': 3.84}
+{'loss': 0.4818, 'grad_norm': 4.7244486808776855, 'learning_rate': 1.1254728877679698e-05, 'epoch': 3.88}
+{'loss': 0.5011, 'grad_norm': 2.7913689613342285, 'learning_rate': 1.0939470365699875e-05, 'epoch': 3.91}
+{'loss': 0.535, 'grad_norm': 4.445932865142822, 'learning_rate': 1.0624211853720051e-05, 'epoch': 3.94}
+{'loss': 0.5339, 'grad_norm': 3.155578136444092, 'learning_rate': 1.0308953341740229e-05, 'epoch': 3.97}
+ 80%|████████  | 12696/15870 [4:07:53<51:46,  1.0Preds: [0 0 0 ... 0 0 0]
+Num ones:  0██▉| 461/462 [02:48<00:00,  2.74it/s]
+Num zeroes:  7377
+/home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+{'eval_loss': 0.5960667729377747, 'eval_accuracy': 0.8027653517690118, 'eval_f1': 0.0, 'eval_precision': 0.0, 'eval_recall': 0.0, 'eval_runtime': 169.1397, 'eval_samples_per_second': 43.615, 'eval_steps_per_second': 2.731, 'epoch': 4.0}    
+{'loss': 0.5084, 'grad_norm': 2.358130931854248, 'learning_rate': 9.993694829760405e-06, 'epoch': 4.0}
+{'loss': 0.5019, 'grad_norm': 1.7358143329620361, 'learning_rate': 9.67843631778058e-06, 'epoch': 4.03}
+{'loss': 0.4979, 'grad_norm': 1.700198769569397, 'learning_rate': 9.363177805800758e-06, 'epoch': 4.06}
+{'loss': 0.5244, 'grad_norm': 2.3045010566711426, 'learning_rate': 9.047919293820934e-06, 'epoch': 4.1}
+{'loss': 0.5253, 'grad_norm': 1.3704067468643188, 'learning_rate': 8.732660781841112e-06, 'epoch': 4.13}
+{'loss': 0.5234, 'grad_norm': 2.149785280227661, 'learning_rate': 8.417402269861287e-06, 'epoch': 4.16}
+{'loss': 0.502, 'grad_norm': 1.4972553253173828, 'learning_rate': 8.102143757881463e-06, 'epoch': 4.19}
+{'loss': 0.5191, 'grad_norm': 1.9472804069519043, 'learning_rate': 7.78688524590164e-06, 'epoch': 4.22}
+{'loss': 0.5067, 'grad_norm': 1.7169615030288696, 'learning_rate': 7.471626733921816e-06, 'epoch': 4.25}
+{'loss': 0.5398, 'grad_norm': 3.7890737056732178, 'learning_rate': 7.156368221941993e-06, 'epoch': 4.28}
+{'loss': 0.4803, 'grad_norm': 1.7919427156448364, 'learning_rate': 6.841109709962169e-06, 'epoch': 4.32}
+{'loss': 0.5343, 'grad_norm': 1.4363160133361816, 'learning_rate': 6.525851197982345e-06, 'epoch': 4.35}
+{'loss': 0.5148, 'grad_norm': 3.093284845352173, 'learning_rate': 6.210592686002523e-06, 'epoch': 4.38}
+{'loss': 0.5414, 'grad_norm': 4.802974700927734, 'learning_rate': 5.8953341740226986e-06, 'epoch': 4.41}
+{'loss': 0.5152, 'grad_norm': 1.5272421836853027, 'learning_rate': 5.580075662042875e-06, 'epoch': 4.44}
+{'loss': 0.4876, 'grad_norm': 2.9641923904418945, 'learning_rate': 5.264817150063052e-06, 'epoch': 4.47}
+{'loss': 0.5308, 'grad_norm': 6.179667949676514, 'learning_rate': 4.949558638083229e-06, 'epoch': 4.51}
+{'loss': 0.5118, 'grad_norm': 1.356643795967102, 'learning_rate': 4.6343001261034054e-06, 'epoch': 4.54}
+{'loss': 0.5286, 'grad_norm': 1.5880831480026245, 'learning_rate': 4.319041614123581e-06, 'epoch': 4.57}
+{'loss': 0.526, 'grad_norm': 1.1910074949264526, 'learning_rate': 4.003783102143758e-06, 'epoch': 4.6}
+{'loss': 0.5216, 'grad_norm': 1.325662612915039, 'learning_rate': 3.6885245901639347e-06, 'epoch': 4.63}
+{'loss': 0.5237, 'grad_norm': 3.1455910205841064, 'learning_rate': 3.373266078184111e-06, 'epoch': 4.66}
+{'loss': 0.5165, 'grad_norm': 3.638716220855713, 'learning_rate': 3.0580075662042873e-06, 'epoch': 4.69}
+{'loss': 0.4861, 'grad_norm': 5.054396152496338, 'learning_rate': 2.742749054224464e-06, 'epoch': 4.73}
+{'loss': 0.5346, 'grad_norm': 2.4697813987731934, 'learning_rate': 2.4274905422446407e-06, 'epoch': 4.76}
+{'loss': 0.5063, 'grad_norm': 4.73737096786499, 'learning_rate': 2.112232030264817e-06, 'epoch': 4.79}
+{'loss': 0.5141, 'grad_norm': 2.683194398880005, 'learning_rate': 1.7969735182849937e-06, 'epoch': 4.82}
+{'loss': 0.5326, 'grad_norm': 1.707687497138977, 'learning_rate': 1.4817150063051702e-06, 'epoch': 4.85}
+{'loss': 0.5216, 'grad_norm': 1.6598219871520996, 'learning_rate': 1.1664564943253467e-06, 'epoch': 4.88}
+{'loss': 0.4884, 'grad_norm': 2.386409282684326, 'learning_rate': 8.511979823455235e-07, 'epoch': 4.91}
+{'loss': 0.5108, 'grad_norm': 3.3873291015625, 'learning_rate': 5.359394703657e-07, 'epoch': 4.95}
+{'loss': 0.4901, 'grad_norm': 1.8981949090957642, 'learning_rate': 2.2068095838587644e-07, 'epoch': 4.98}
+100%|██████████| 15870/15870 [5:10:34<00:00,  1.0Preds: [0 0 0 ... 0 0 0]
+Num ones:  0██▉| 461/462 [02:48<00:00,  2.74it/s]
+Num zeroes:  7377
+/home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1509: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 due to no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+{'eval_loss': 0.6520137190818787, 'eval_accuracy': 0.8027653517690118, 'eval_f1': 0.0, 'eval_precision': 0.0, 'eval_recall': 0.0, 'eval_runtime': 169.0641, 'eval_samples_per_second': 43.634, 'eval_steps_per_second': 2.733, 'epoch': 5.0}    
+{'train_runtime': 18803.6788, 'train_samples_per_second': 13.502, 'train_steps_per_second': 0.844, 'train_loss': 0.5240955686899725, 'epoch': 5.0}
+100%|██████████| 15870/15870 [5:13:23<00:00,  1.18s/it]
+wandb:                                                                                
+wandb: W&B sync reduced upload amount by 1.8%             
+wandb: 
+wandb: Run history:
+wandb:           eval/accuracy ▁▁▁▁▁
+wandb:                 eval/f1 ▁▁▁▁▁
+wandb:               eval/loss ▁▂█▅▇
+wandb:          eval/precision ▁▁▁▁▁
+wandb:             eval/recall ▁▁▁▁▁
+wandb:            eval/runtime █▆▃▂▁
+wandb: eval/samples_per_second ▁▃▆▇█
+wandb:   eval/steps_per_second ▁▂▆▆█
+wandb:             train/epoch ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:       train/global_step ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb:         train/grad_norm ▅▆▅▂▃▃▃▇▂▂▄▁▅▂▅▁▂▆▄▁▄▂▅▄▃▁█▂▃▂▄▄▃▂▂▄▁█▂▂
+wandb:     train/learning_rate ███▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▅▄▄▄▄▄▄▃▃▃▃▃▂▂▂▂▂▂▁▁▁
+wandb:              train/loss ▇▄▅▇█▆▅▅▄▆▆▄▄▆▅▄▄▄▄▅▅▅▅▃▆▄▅▅▅▃▃▅▄▄▅▁▅▁▅▁
+wandb: 
+wandb: Run summary:
+wandb:            eval/accuracy 0.80277
+wandb:                  eval/f1 0.0
+wandb:                eval/loss 0.65201
+wandb:           eval/precision 0.0
+wandb:              eval/recall 0.0
+wandb:             eval/runtime 169.0641
+wandb:  eval/samples_per_second 43.634
+wandb:    eval/steps_per_second 2.733
+wandb:               total_flos 2.3660339417852928e+17
+wandb:              train/epoch 5.0
+wandb:        train/global_step 15870
+wandb:          train/grad_norm 1.89819
+wandb:      train/learning_rate 0.0
+wandb:               train/loss 0.4901
+wandb:               train_loss 0.5241
+wandb:            train_runtime 18803.6788
+wandb: train_samples_per_second 13.502
+wandb:   train_steps_per_second 0.844
+wandb: 
+wandb: 🚀 View run warm-glitter-17 at: https://wandb.ai/e-martin/dat550_project_base_full/runs/si1ipc53
+wandb: ⭐️ View project at: https://wandb.ai/e-martin/dat550_project_base_full
+wandb: Synced 6 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240419_040047-si1ipc53/logs

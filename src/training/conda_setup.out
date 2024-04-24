@@ -1,0 +1,226 @@
+CUDA is a parallel computing platform for computing on GPUs, https://developer.nvidia.com/cuda-toolkit
+prepending to __UENV: cuda-12.2.0
+setting env CUDA_HOME=/usr/local/_cuda/cuda-12.2.0_ubuntu20
+prepending to PATH: /usr/local/_cuda/cuda-12.2.0_ubuntu20/bin
+prepending to LD_LIBRARY_PATH: /usr/local/_cuda/cuda-12.2.0_ubuntu20/lib64
+
+
+A GPU-accelerated library of primitives for deep neural networks, https://developer.nvidia.com/cudnn
+prepending to __UENV: cudnn-12.x-8.8.0
+prepending to LD_LIBRARY_PATH: /usr/local/_cuda/cudnn-12.x-8.8.0/lib
+
+
+
+Collecting aiohttp==3.9.5 (from -r train.txt (line 1))
+  Downloading aiohttp-3.9.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.5 kB)
+Collecting aiosignal==1.3.1 (from -r train.txt (line 2))
+  Using cached aiosignal-1.3.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting appdirs==1.4.4 (from -r train.txt (line 3))
+  Using cached appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting attrs==23.2.0 (from -r train.txt (line 4))
+  Using cached attrs-23.2.0-py3-none-any.whl.metadata (9.5 kB)
+Requirement already satisfied: certifi==2024.2.2 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 5)) (2024.2.2)
+Collecting charset-normalizer==3.3.2 (from -r train.txt (line 6))
+  Downloading charset_normalizer-3.3.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (33 kB)
+Collecting click==8.1.7 (from -r train.txt (line 7))
+  Using cached click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+Collecting datasets==2.18.0 (from -r train.txt (line 8))
+  Using cached datasets-2.18.0-py3-none-any.whl.metadata (20 kB)
+Collecting dill==0.3.8 (from -r train.txt (line 9))
+  Using cached dill-0.3.8-py3-none-any.whl.metadata (10 kB)
+Collecting docker-pycreds==0.4.0 (from -r train.txt (line 10))
+  Using cached docker_pycreds-0.4.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting filelock==3.13.4 (from -r train.txt (line 11))
+  Downloading filelock-3.13.4-py3-none-any.whl.metadata (2.8 kB)
+Collecting frozenlist==1.4.1 (from -r train.txt (line 12))
+  Using cached frozenlist-1.4.1-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting fsspec==2024.2.0 (from -r train.txt (line 13))
+  Using cached fsspec-2024.2.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting gitdb==4.0.11 (from -r train.txt (line 14))
+  Using cached gitdb-4.0.11-py3-none-any.whl.metadata (1.2 kB)
+Collecting GitPython==3.1.43 (from -r train.txt (line 15))
+  Using cached GitPython-3.1.43-py3-none-any.whl.metadata (13 kB)
+Requirement already satisfied: huggingface-hub==0.22.2 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 16)) (0.22.2)
+Collecting idna==3.7 (from -r train.txt (line 17))
+  Downloading idna-3.7-py3-none-any.whl.metadata (9.9 kB)
+Requirement already satisfied: Jinja2==3.1.3 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 18)) (3.1.3)
+Collecting joblib==1.4.0 (from -r train.txt (line 19))
+  Using cached joblib-1.4.0-py3-none-any.whl.metadata (5.4 kB)
+Collecting MarkupSafe==2.1.5 (from -r train.txt (line 20))
+  Downloading MarkupSafe-2.1.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.0 kB)
+Requirement already satisfied: mpmath==1.3.0 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 21)) (1.3.0)
+Collecting multidict==6.0.5 (from -r train.txt (line 22))
+  Using cached multidict-6.0.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting multiprocess==0.70.16 (from -r train.txt (line 23))
+  Using cached multiprocess-0.70.16-py312-none-any.whl.metadata (7.2 kB)
+Collecting networkx==3.3 (from -r train.txt (line 24))
+  Downloading networkx-3.3-py3-none-any.whl.metadata (5.1 kB)
+Requirement already satisfied: numpy==1.26.4 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 25)) (1.26.4)
+Collecting nvidia-cublas-cu12==12.1.3.1 (from -r train.txt (line 26))
+  Using cached nvidia_cublas_cu12-12.1.3.1-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-cupti-cu12==12.1.105 (from -r train.txt (line 27))
+  Using cached nvidia_cuda_cupti_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cuda-nvrtc-cu12==12.1.105 (from -r train.txt (line 28))
+  Using cached nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cuda-runtime-cu12==12.1.105 (from -r train.txt (line 29))
+  Using cached nvidia_cuda_runtime_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cudnn-cu12==8.9.2.26 (from -r train.txt (line 30))
+  Using cached nvidia_cudnn_cu12-8.9.2.26-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cufft-cu12==11.0.2.54 (from -r train.txt (line 31))
+  Using cached nvidia_cufft_cu12-11.0.2.54-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-curand-cu12==10.3.2.106 (from -r train.txt (line 32))
+  Using cached nvidia_curand_cu12-10.3.2.106-py3-none-manylinux1_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-cusolver-cu12==11.4.5.107 (from -r train.txt (line 33))
+  Using cached nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-cusparse-cu12==12.1.0.106 (from -r train.txt (line 34))
+  Using cached nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl.metadata (1.6 kB)
+Collecting nvidia-nccl-cu12==2.19.3 (from -r train.txt (line 35))
+  Using cached nvidia_nccl_cu12-2.19.3-py3-none-manylinux1_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvjitlink-cu12==12.4.127 (from -r train.txt (line 36))
+  Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting nvidia-nvtx-cu12==12.1.105 (from -r train.txt (line 37))
+  Using cached nvidia_nvtx_cu12-12.1.105-py3-none-manylinux1_x86_64.whl.metadata (1.7 kB)
+Requirement already satisfied: packaging==24.0 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 38)) (24.0)
+Collecting pandas==2.2.2 (from -r train.txt (line 39))
+  Using cached pandas-2.2.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (19 kB)
+Collecting protobuf==4.25.3 (from -r train.txt (line 40))
+  Using cached protobuf-4.25.3-cp37-abi3-manylinux2014_x86_64.whl.metadata (541 bytes)
+Requirement already satisfied: psutil==5.9.8 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 41)) (5.9.8)
+Collecting pyarrow==15.0.2 (from -r train.txt (line 42))
+  Using cached pyarrow-15.0.2-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+Collecting pyarrow-hotfix==0.6 (from -r train.txt (line 43))
+  Using cached pyarrow_hotfix-0.6-py3-none-any.whl.metadata (3.6 kB)
+Collecting python-dateutil==2.9.0.post0 (from -r train.txt (line 44))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz==2024.1 (from -r train.txt (line 45))
+  Using cached pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+Requirement already satisfied: PyYAML==6.0.1 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 46)) (6.0.1)
+Requirement already satisfied: regex==2024.4.16 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 47)) (2024.4.16)
+Requirement already satisfied: requests==2.31.0 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 48)) (2.31.0)
+Requirement already satisfied: safetensors==0.4.3 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 49)) (0.4.3)
+Collecting scikit-learn==1.4.2 (from -r train.txt (line 50))
+  Using cached scikit_learn-1.4.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting scipy==1.13.0 (from -r train.txt (line 51))
+  Using cached scipy-1.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (60 kB)
+Collecting sentry-sdk==1.45.0 (from -r train.txt (line 52))
+  Using cached sentry_sdk-1.45.0-py2.py3-none-any.whl.metadata (9.9 kB)
+Collecting setproctitle==1.3.3 (from -r train.txt (line 53))
+  Using cached setproctitle-1.3.3-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.9 kB)
+Collecting six==1.16.0 (from -r train.txt (line 54))
+  Using cached six-1.16.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting smmap==5.0.1 (from -r train.txt (line 55))
+  Using cached smmap-5.0.1-py3-none-any.whl.metadata (4.3 kB)
+Requirement already satisfied: sympy==1.12 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 56)) (1.12)
+Collecting threadpoolctl==3.4.0 (from -r train.txt (line 57))
+  Using cached threadpoolctl-3.4.0-py3-none-any.whl.metadata (13 kB)
+Requirement already satisfied: tokenizers==0.15.2 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 58)) (0.15.2)
+Requirement already satisfied: torch==2.2.2 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 59)) (2.2.2)
+Requirement already satisfied: tqdm==4.66.2 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 60)) (4.66.2)
+Requirement already satisfied: transformers==4.39.3 in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from -r train.txt (line 61)) (4.39.3)
+Collecting triton==2.2.0 (from -r train.txt (line 62))
+  Using cached triton-2.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting typing_extensions==4.11.0 (from -r train.txt (line 63))
+  Downloading typing_extensions-4.11.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting tzdata==2024.1 (from -r train.txt (line 64))
+  Using cached tzdata-2024.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting urllib3==2.2.1 (from -r train.txt (line 65))
+  Downloading urllib3-2.2.1-py3-none-any.whl.metadata (6.4 kB)
+Collecting wandb==0.16.6 (from -r train.txt (line 66))
+  Using cached wandb-0.16.6-py3-none-any.whl.metadata (10 kB)
+Collecting xxhash==3.4.1 (from -r train.txt (line 67))
+  Using cached xxhash-3.4.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting yarl==1.9.4 (from -r train.txt (line 68))
+  Using cached yarl-1.9.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (31 kB)
+Requirement already satisfied: setuptools in /home/stud/emartin/.conda/envs/transformer_cuda12/lib/python3.12/site-packages (from wandb==0.16.6->-r train.txt (line 66)) (68.2.2)
+Downloading aiohttp-3.9.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 4.8 MB/s eta 0:00:00
+Using cached aiosignal-1.3.1-py3-none-any.whl (7.6 kB)
+Using cached appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Using cached attrs-23.2.0-py3-none-any.whl (60 kB)
+Downloading charset_normalizer-3.3.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (141 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 141.9/141.9 kB 647.7 kB/s eta 0:00:00
+Using cached click-8.1.7-py3-none-any.whl (97 kB)
+Using cached datasets-2.18.0-py3-none-any.whl (510 kB)
+Using cached dill-0.3.8-py3-none-any.whl (116 kB)
+Using cached docker_pycreds-0.4.0-py2.py3-none-any.whl (9.0 kB)
+Downloading filelock-3.13.4-py3-none-any.whl (11 kB)
+Using cached frozenlist-1.4.1-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (281 kB)
+Using cached fsspec-2024.2.0-py3-none-any.whl (170 kB)
+Using cached gitdb-4.0.11-py3-none-any.whl (62 kB)
+Using cached GitPython-3.1.43-py3-none-any.whl (207 kB)
+Downloading idna-3.7-py3-none-any.whl (66 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.8/66.8 kB 368.0 kB/s eta 0:00:00
+Using cached joblib-1.4.0-py3-none-any.whl (301 kB)
+Downloading MarkupSafe-2.1.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (28 kB)
+Using cached multidict-6.0.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (130 kB)
+Using cached multiprocess-0.70.16-py312-none-any.whl (146 kB)
+Downloading networkx-3.3-py3-none-any.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 3.3 MB/s eta 0:00:00
+Using cached nvidia_cublas_cu12-12.1.3.1-py3-none-manylinux1_x86_64.whl (410.6 MB)
+Using cached nvidia_cuda_cupti_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (14.1 MB)
+Using cached nvidia_cuda_nvrtc_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (23.7 MB)
+Using cached nvidia_cuda_runtime_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (823 kB)
+Using cached nvidia_cudnn_cu12-8.9.2.26-py3-none-manylinux1_x86_64.whl (731.7 MB)
+Using cached nvidia_cufft_cu12-11.0.2.54-py3-none-manylinux1_x86_64.whl (121.6 MB)
+Using cached nvidia_curand_cu12-10.3.2.106-py3-none-manylinux1_x86_64.whl (56.5 MB)
+Using cached nvidia_cusolver_cu12-11.4.5.107-py3-none-manylinux1_x86_64.whl (124.2 MB)
+Using cached nvidia_cusparse_cu12-12.1.0.106-py3-none-manylinux1_x86_64.whl (196.0 MB)
+Using cached nvidia_nccl_cu12-2.19.3-py3-none-manylinux1_x86_64.whl (166.0 MB)
+Downloading nvidia_nvjitlink_cu12-12.4.127-py3-none-manylinux2014_x86_64.whl (21.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.1/21.1 MB 18.8 MB/s eta 0:00:00
+Using cached nvidia_nvtx_cu12-12.1.105-py3-none-manylinux1_x86_64.whl (99 kB)
+Using cached pandas-2.2.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.7 MB)
+Using cached protobuf-4.25.3-cp37-abi3-manylinux2014_x86_64.whl (294 kB)
+Using cached pyarrow-15.0.2-cp312-cp312-manylinux_2_28_x86_64.whl (38.3 MB)
+Using cached pyarrow_hotfix-0.6-py3-none-any.whl (7.9 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2024.1-py2.py3-none-any.whl (505 kB)
+Using cached scikit_learn-1.4.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.2 MB)
+Using cached scipy-1.13.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (38.2 MB)
+Using cached sentry_sdk-1.45.0-py2.py3-none-any.whl (267 kB)
+Using cached setproctitle-1.3.3-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (31 kB)
+Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Using cached smmap-5.0.1-py3-none-any.whl (24 kB)
+Using cached threadpoolctl-3.4.0-py3-none-any.whl (17 kB)
+Using cached triton-2.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (167.9 MB)
+Downloading typing_extensions-4.11.0-py3-none-any.whl (34 kB)
+Using cached tzdata-2024.1-py2.py3-none-any.whl (345 kB)
+Downloading urllib3-2.2.1-py3-none-any.whl (121 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 121.1/121.1 kB 808.7 kB/s eta 0:00:00
+Using cached wandb-0.16.6-py3-none-any.whl (2.2 MB)
+Using cached xxhash-3.4.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (194 kB)
+Using cached yarl-1.9.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (322 kB)
+Installing collected packages: pytz, appdirs, xxhash, urllib3, tzdata, typing_extensions, threadpoolctl, smmap, six, setproctitle, scipy, pyarrow-hotfix, pyarrow, protobuf, nvidia-nvtx-cu12, nvidia-nvjitlink-cu12, nvidia-nccl-cu12, nvidia-curand-cu12, nvidia-cufft-cu12, nvidia-cuda-runtime-cu12, nvidia-cuda-nvrtc-cu12, nvidia-cuda-cupti-cu12, nvidia-cublas-cu12, networkx, multidict, MarkupSafe, joblib, idna, fsspec, frozenlist, filelock, dill, click, charset-normalizer, attrs, yarl, triton, sentry-sdk, scikit-learn, python-dateutil, nvidia-cusparse-cu12, nvidia-cudnn-cu12, multiprocess, gitdb, docker-pycreds, aiosignal, pandas, nvidia-cusolver-cu12, GitPython, aiohttp, wandb, datasets
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.1.0
+    Uninstalling urllib3-2.1.0:
+      Successfully uninstalled urllib3-2.1.0
+  Attempting uninstall: typing_extensions
+    Found existing installation: typing_extensions 4.9.0
+    Uninstalling typing_extensions-4.9.0:
+      Successfully uninstalled typing_extensions-4.9.0
+  Attempting uninstall: networkx
+    Found existing installation: networkx 3.1
+    Uninstalling networkx-3.1:
+      Successfully uninstalled networkx-3.1
+  Attempting uninstall: MarkupSafe
+    Found existing installation: MarkupSafe 2.1.3
+    Uninstalling MarkupSafe-2.1.3:
+      Successfully uninstalled MarkupSafe-2.1.3
+  Attempting uninstall: idna
+    Found existing installation: idna 3.4
+    Uninstalling idna-3.4:
+      Successfully uninstalled idna-3.4
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2024.3.1
+    Uninstalling fsspec-2024.3.1:
+      Successfully uninstalled fsspec-2024.3.1
+  Attempting uninstall: filelock
+    Found existing installation: filelock 3.13.1
+    Uninstalling filelock-3.13.1:
+      Successfully uninstalled filelock-3.13.1
+  Attempting uninstall: charset-normalizer
+    Found existing installation: charset-normalizer 2.0.4
+    Uninstalling charset-normalizer-2.0.4:
+      Successfully uninstalled charset-normalizer-2.0.4
+Successfully installed GitPython-3.1.43 MarkupSafe-2.1.5 aiohttp-3.9.5 aiosignal-1.3.1 appdirs-1.4.4 attrs-23.2.0 charset-normalizer-3.3.2 click-8.1.7 datasets-2.18.0 dill-0.3.8 docker-pycreds-0.4.0 filelock-3.13.4 frozenlist-1.4.1 fsspec-2024.2.0 gitdb-4.0.11 idna-3.7 joblib-1.4.0 multidict-6.0.5 multiprocess-0.70.16 networkx-3.3 nvidia-cublas-cu12-12.1.3.1 nvidia-cuda-cupti-cu12-12.1.105 nvidia-cuda-nvrtc-cu12-12.1.105 nvidia-cuda-runtime-cu12-12.1.105 nvidia-cudnn-cu12-8.9.2.26 nvidia-cufft-cu12-11.0.2.54 nvidia-curand-cu12-10.3.2.106 nvidia-cusolver-cu12-11.4.5.107 nvidia-cusparse-cu12-12.1.0.106 nvidia-nccl-cu12-2.19.3 nvidia-nvjitlink-cu12-12.4.127 nvidia-nvtx-cu12-12.1.105 pandas-2.2.2 protobuf-4.25.3 pyarrow-15.0.2 pyarrow-hotfix-0.6 python-dateutil-2.9.0.post0 pytz-2024.1 scikit-learn-1.4.2 scipy-1.13.0 sentry-sdk-1.45.0 setproctitle-1.3.3 six-1.16.0 smmap-5.0.1 threadpoolctl-3.4.0 triton-2.2.0 typing_extensions-4.11.0 tzdata-2024.1 urllib3-2.2.1 wandb-0.16.6 xxhash-3.4.1 yarl-1.9.4

@@ -26,3 +26,5 @@ predictions/
 
 # Exclude zone.identifier files
 **/zone.identifier
+
+wandb/
