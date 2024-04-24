@@ -264,6 +264,15 @@ def train(config=None):
 
 if __name__ == "__main__":
 
+    base_path = "/home/emrds/repos/Multilingual-Check-worthiness-Estimation-in-Text"
+    dataset_path, save_path = get_paths(base_path=base_path)
+
+    train, test, dev_test = get_dataset(
+        base_path=dataset_path, lang="all", sample=False, n_samples=10000
+    )
+    tokenized_train = train.map(tokenize_function, batched=True)
+    tokenized_test = test.map(tokenize_function, batched=True)
+
     sweep_config = {
         "method": "random",
         "metric": {
