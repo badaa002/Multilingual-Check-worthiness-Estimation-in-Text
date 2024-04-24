@@ -40,6 +40,9 @@ def get_paths(base_path: str = "../../") -> Any:
 def load_dataset(path: str) -> Dataset:
     try:
         df = pd.read_csv(path, sep="\t")
+        df = df.rename(columns={"class_label": "label", "tweet_text": "text"})
+        df["label"] = df["label"].apply(lambda x: 1 if x == "Yes" else 0)
+        df = df.drop("tweet_id", axis=1)
     except Exception as e:
         print(f"Error loading dataset: {e}")
         return None
@@ -297,7 +300,7 @@ if __name__ == "__main__":
     }
 
     config = {
-        "learning_rate": 1e-6,
+        "learning_rate": 1e-5,
         "num_train_epochs": 3,
         "per_device_train_batch_size": 16,
         "per_device_eval_batch_size": 16,
