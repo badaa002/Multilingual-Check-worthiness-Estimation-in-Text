@@ -18,11 +18,13 @@ en_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estima
 du_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_dutch/processed_dutch_dev_test.tsv"
 es_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_spanish/processed_spanish_dev_test.tsv"
 ar_dataset_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/processed_CT24_checkworthy_arabic/processed_arabic_dev_test.tsv"
+all_data_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/data/processed/merged_dev_test.tsv"
 
 en_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run18/"
 es_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run19/"
 du_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run20/"
 ar_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run21/"
+full_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estimation-in-Text/results/run16"
 
 
 def load_dataset(path: str) -> Dataset:
@@ -68,11 +70,14 @@ def predict(model_path: str, dataset_path: str, lang: str):
 
 
 if __name__ == "__main__":
+    # datasets = [
+    #     ("en", en_dataset_path, en_model_path),
+    #     ("nl", du_dataset_path, du_model_path),
+    #     ("ar", ar_dataset_path, ar_model_path),
+    #     ("es", es_dataset_path, es_model_path),
+    # ]
     datasets = [
-        ("en", en_dataset_path, en_model_path),
-        ("nl", du_dataset_path, du_model_path),
-        ("ar", ar_dataset_path, ar_model_path),
-        ("es", es_dataset_path, es_model_path),
+        ("all", all_data_path, full_model_path),
     ]
     for lang, dataset, model in datasets:
         predict(model, dataset, lang)
