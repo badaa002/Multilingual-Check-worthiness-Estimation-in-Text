@@ -28,15 +28,10 @@ full_model_path = "/home/stud/emartin/bhome/Multilingual-Check-worthiness-Estima
 
 
 def load_dataset(path: str) -> Dataset:
-    try:
-        df = pd.read_csv(path, sep="\t")
-        df = df.rename(columns={"class_label": "label", "tweet_text": "text"})
-        df["label"] = df["label"].apply(lambda x: 1 if x == "Yes" else 0)
-        df = df.drop("tweet_id", axis=1)
-        df = df.dropna(subset=["text"])
-    except Exception as e:
-        print(f"Error loading dataset: {e}")
-        return None
+    df = pd.read_csv(path, sep="\t")
+    df = df.rename(columns={"class_label": "label", "tweet_text": "text"})
+    df["label"] = df["label"].apply(lambda x: 1 if x == "Yes" else 0)
+    df = df.dropna(subset=["text"])
     return Dataset.from_pandas(df)
 
 
